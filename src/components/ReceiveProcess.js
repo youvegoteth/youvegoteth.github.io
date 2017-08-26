@@ -17,7 +17,7 @@ class Receive_Process extends Component {
             <p>When Confired, TX Address: 0x36digithash</p>
             <p>Congratulations! You're special! Welcome to the future of the internet!</p>
 
-            <Link to="/send"><input type="submit" value="Send ETH to a friend" class="special" /></Link>
+            <Link to="/send"><input type="submit" value="Send ETH to a friend" className="special" /></Link>
 
           </div>
         </div>
