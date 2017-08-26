@@ -22,9 +22,7 @@
             
             // Extend the web3 object
             Accounts.log = function(msg){console.log(msg);};
-            
-            console.log(Accounts.length);
-            
+                        
             // When the window DOM loads
             window.onload = function () {
                 // Send ether to the account you want to use (for testing)

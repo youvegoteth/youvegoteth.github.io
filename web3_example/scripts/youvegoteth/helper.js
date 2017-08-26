@@ -1,3 +1,5 @@
+var weiPerEther = 1000000000000000000;
+
 // Make alias of docuemtn.getElementById -> $
 function makeAlias(object, name) {
     var fn = object ? object[name] : null;
@@ -9,7 +11,6 @@ function makeAlias(object, name) {
 
 // Make docuemtn.getElementById aliased by $
 $ = makeAlias(document, 'getElementById');
-
 
 // Create Accounts Object
 var Accounts = new Accounts();
@@ -24,17 +25,34 @@ web3.setProvider(provider);
 // Extend the web3 object
 Accounts.log = function(msg){console.log(msg);};
 
-console.log(Accounts.length);
-
 window.onload = function () {
 
-    
 
     // When 'Generate Account' is clicked
     $("new").onclick = function() {
         var passphrase = 'youvegoteth';
+        var email = $("email").value;
+        var amount = $("amount").value * weiPerEther;
         var newAccount = Accounts.new(passphrase);
-        console.log(newAccount);
+        var _disableDeveloperTip = !$("tip").checked; 
+        var _owner = newAccount.address;
+        var callback = function(error, result){
+            console.log(result, error);
+        };
+        var gasPrice = 1000000000;
+        var gas = 100000 * 2;
+        var gasLimit = gas * 2;
+        var fromAccount = web3.eth.accounts[0];
+        contract.newTransfer.sendTransaction(
+            _disableDeveloperTip,
+            _owner, 
+            {from :fromAccount, 
+                gas: gas, 
+                value: amount,
+                gasLimit: gasLimit, 
+                gasPrice: gasPrice}, 
+        callback);
+
     };
 
 };

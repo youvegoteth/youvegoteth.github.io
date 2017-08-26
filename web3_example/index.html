@@ -5,11 +5,24 @@
         <script src="scripts/ethereumjs/ethereumjs-accounts.js"></script>
         <script src="scripts/ethereumjs/web3.js"></script>
         <script src="scripts/ethereumjs/hooked-web3-provider.js"></script>
+        <script src="scripts/youvegoteth/index.js"></script>
         <script src="scripts/youvegoteth/helper.js"></script>
 
     </head>
     <body>
-        <button id="new">Generate Account</button>
+        <div>
+            <input type="text" placeholder="email" id="email" value="fo@bar.com"> 
+        </div>
+        <div>
+            <input type="text" placeholder="amount" id="amount" value="10">
+        </div>
+        <div>
+        <label for="tip">Tip the devs 1%</label> 
+            <input type="checkbox" id="tip" value="1" checked="checked">
+        </div>
+        <div>
+            <button id="new">Generate Account</button>
+        </div>
 
     </body>
 </html>
