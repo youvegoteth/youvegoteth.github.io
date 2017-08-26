@@ -35,6 +35,7 @@ class SendEntry extends Component {
     });
   }
 
+
   handleChange = (event) => {
    this.setState({userEmail: event.target.value});
  }
@@ -54,6 +55,16 @@ class SendEntry extends Component {
   							<input type="text" name="demo-name" id="demo-name" placeholder="Value in ETH" />
                 <input onChange={this.handleChange} type="email" name="demo-name" id="demo-name" placeholder="Recipient Email" />
   						</div>
+              <p>Support You've Got Eth with a tip</p>
+              <div className="select-wrapper">
+										<select name="demo-category" id="demo-category">
+											<option value="0">- 0% -</option>
+											<option value="10">10%</option>
+											<option value="15">15%</option>
+											<option value="20">20%</option>
+											<option value="25">25%</option>
+										</select>
+									</div>
               <input onClick={this.activateLasers} type="submit" value="Send ETH" className="special" />
 
             </div>
