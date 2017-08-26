@@ -7,7 +7,10 @@ class SendEntry extends Component {
   super(props);
   this.state = {
     show: "entry",
-    userEmail: ""
+    userEmail: "",
+    txHash: "",
+    privKey: "",
+    num_eth: ""
   };
 }
 
@@ -23,10 +26,17 @@ class SendEntry extends Component {
     })
   }
 
+
+  getChainData = () => {
+    this.setState({
+      txHash: "pseudo for KOs data",
+      privKey: "pseudo for KOs data",
+      num_eth: "pseudo for KOs data"
+    });
+  }
+
   handleChange = (event) => {
    this.setState({userEmail: event.target.value});
-   console.log('state', this.state.userEmail);
-   console.log('target', event.target.value);
  }
 
 
@@ -54,7 +64,7 @@ class SendEntry extends Component {
     } else {
       return (
       <div className="container">
-        <SendProcess userEmail={this.state.userEmail}/>
+        <SendProcess userEmail={this.state.userEmail} txHash={this.state.txHash} privKey={this.state.privKey} num_eth={this.state.num_eth} />
         <input onClick={this.deactivateLasers} type="submit" value="Send ETH to another email" className="special" />
       </div>
       )
