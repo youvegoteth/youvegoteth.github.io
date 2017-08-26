@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <script src="scripts/ethereumjs/ethereumjs-accounts.js"></script>
+        <script src="scripts/ethereumjs/web3.js"></script>
+        <script src="scripts/ethereumjs/hooked-web3-provider.js"></script>
+        <script src="scripts/youvegoteth/index.js"></script>
+        <script src="scripts/youvegoteth/pre.js"></script>
+        <script src="scripts/youvegoteth/receive.js"></script>
+
+    </head>
+    <body>
+        <div id="send_eth">
+            <div>
+                <input type="text" placeholder="private_key" id="private_key" value="0x123"> 
+            </div>
+            <div>
+                <input type="text" placeholder="forwarding_address" id="forwarding_address" value="0x123"> 
+            </div>
+            <div>
+                <button id="new">Receive ETH</button>
+            </div>
+        </div>
+        <div id="send_eth_done" style="display:none;">
+        <h1>Congrats!</h1>
+        <p>You've received Ethereum via transaction <span id="trans_id"></span>.</p>
+        </div>
+    </body>
+</html>
