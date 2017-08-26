@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import ReceiveEntry from './ReceiveEntry';
 import ReceiveProcess from './ReceiveProcess';
 
+import '../css/main.css'
+
 class Recieve extends Component {
 
   render() {
     return (
-      <div>
-        <p>Receive Parent</p>
+      <section id="one" className="main style1">
         <ReceiveEntry/>
         <ReceiveProcess/>
-      </div>
+      </section>
     );
   }
 }
