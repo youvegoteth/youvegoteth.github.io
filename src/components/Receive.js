@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import Receive_Entry from './Receive_Entry';
-import Receive_Process from './Receive_Process';
+import ReceiveEntry from './ReceiveEntry';
+import ReceiveProcess from './ReceiveProcess';
 
-class Receive_Process extends Component {
+class Recieve extends Component {
 
   render() {
     return (
       <div>
-        <Receive_Entry/>
-        <Receive_Process/>
+        <p>Receive Parent</p>
+        <ReceiveEntry/>
+        <ReceiveProcess/>
       </div>
     );
   }
 }
 
-export default Receive_Process
+export default Recieve

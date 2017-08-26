@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
-import './css/oswald.css'
-import './css/open-sans.css'
-import './css/pure-min.css'
-import './App.css'
+import SendEntry from './SendEntry';
+import SendProcess from './SendProcess';
 
 class Send extends Component {
   constructor(props) {
@@ -24,8 +22,8 @@ class Send extends Component {
     return (
       <div className="App">
         <p>Send Parent</p>
-        <Send_Entry />
-        <Send_Process />
+        <SendEntry />
+        <SendProcess />
       </div>
     );
   }
