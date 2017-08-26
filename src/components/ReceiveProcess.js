@@ -21,7 +21,7 @@ class Receive_Process extends Component {
 
           </div>
         </div>
-      </div>
+      </div>  
     );
   }
 }
