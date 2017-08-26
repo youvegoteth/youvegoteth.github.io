@@ -1,0 +1,35 @@
+
+.App-header {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.Header-title {
+  font-weight: 800;
+  font-size: 1.15em;
+  text-align: left;
+}
+
+.Header-left {
+  flex: 1;
+  text-align: left;
+}
+
+.Header-right {
+  flex: 1;
+  text-align: right;
+}
+
+.Header-width {
+  flex: 1;
+  max-width: 1100px;
+}
