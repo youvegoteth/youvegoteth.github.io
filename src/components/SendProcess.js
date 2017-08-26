@@ -17,6 +17,8 @@ class SendProcess extends Component {
             <p>Progress: Waiting, In Progress, Confirmed</p>
             <p>When Confired, TX Address: 0x36digithash</p>
 
+            <a href="mailto:kevin@me.com" className="button special">Notify Recipient</a>
+
             <Link to="/send"><input type="submit" value="Send ETH to another email" className="special" /></Link>
 
           </div>
