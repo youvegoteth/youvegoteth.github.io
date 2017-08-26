@@ -17,7 +17,7 @@ class SendProcess extends Component {
             <p>Progress: Waiting, In Progress, Confirmed</p>
             <p>When Confired, TX Address: 0x36digithash</p>
 
-            <a href={"mailto:" + this.props.userEmail} className="button special">Notify Recipient</a>
+            <a href={"mailto:" + this.props.userEmail + "?subject=Hey Here's%20Some%20Ethereum&body=Hey,\nI'm sending you some Ethereum, to claim please follow this link http://www.geocities.com/wowhtml/"} className="button special">Notify Recipient</a>
 
           </div>
         </div>
@@ -28,3 +28,6 @@ class SendProcess extends Component {
 }
 
 export default SendProcess
+
+
+
