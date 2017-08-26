@@ -27,7 +27,6 @@ Accounts.log = function(msg){console.log(msg);};
 
 window.onload = function () {
 
-
     // When 'Generate Account' is clicked
     $("new").onclick = function() {
         var passphrase = 'youvegoteth';
@@ -37,7 +36,15 @@ window.onload = function () {
         var _disableDeveloperTip = !$("tip").checked; 
         var _owner = newAccount.address;
         var callback = function(error, result){
-            console.log(result, error);
+            if(error){
+                alert('got an error :(');
+            } else {
+                console.log(result);
+                $("send_eth").style.display = 'none';
+                $("send_eth_done").style.display = 'block';
+                $("trans_id").innerHTML = result;
+                $("priv_key").innerHTML = newAccount.private;
+            }
         };
         var gasPrice = 1000000000;
         var gas = 100000 * 2;
