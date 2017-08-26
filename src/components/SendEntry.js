@@ -12,7 +12,7 @@ class SendEntry extends Component {
             <header className="major">
               <h2>Send Entry</h2>
             </header>
-            <p>Send Entry copy</p>
+            <p>Send copy</p>
             <div class="6u 12u$(xsmall)">
 							<input type="text" name="demo-name" id="demo-name" placeholder="Value in ETH" />
               <input type="email" name="demo-name" id="demo-name" placeholder="Recipient Email" />

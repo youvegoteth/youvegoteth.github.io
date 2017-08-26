@@ -11,6 +11,7 @@ class SendProcess extends Component {
             <header className="major">
               <h2>Send Process</h2>
             </header>
+            <p>Send copy</p>
             <p>You've sent ETH to " recipient email"</p>
             <p>Contract Address: 0x36digithash</p>
             <p>Progress: Waiting, In Progress, Confirmed</p>
