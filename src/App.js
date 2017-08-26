@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Home from './components/Home'
-import Receive from './components/Receive'
-import Send from './components/Send'
+import ReceiveEntry from './components/ReceiveEntry'
+import ReceiveProcess from './components/ReceiveProcess'
+import SendEntry from './components/SendEntry'
+import SendProcess from './components/SendProcess'
 import Other from './components/Other'
 
 import './css/oswald.css'
@@ -74,12 +77,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Home/>
-        <Send/>
-        <Receive/>
-        <Other/>
-      </div>
+      <Router>
+        <div>
+          <Home/>
+          <Route exact path="/" component={SendEntry}/>
+          <Route exact path="/send" component={SendEntry}/>
+          <Route exact path="/send/*" component={SendProcess}/>
+          <Route exact path="/receive" component={ReceiveEntry}/>
+          <Route exact path="/receive/*" component={ReceiveProcess}/>
+          <Other/>
+        </div>
+      </Router>
     );
   }
 }

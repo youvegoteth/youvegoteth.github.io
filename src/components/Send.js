@@ -4,27 +4,13 @@ import SendEntry from './SendEntry';
 import SendProcess from './SendProcess';
 
 class Send extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      storageValue: 0,
-      web3: null
-    }
-  }
-
-  componentWillMount() {
-
-  }
-
 
   render() {
     return (
-      <div className="App">
-        <p>Send Parent</p>
+      <section id="one" className="main style1">
         <SendEntry />
         <SendProcess />
-      </div>
+      </section>
     );
   }
 }
