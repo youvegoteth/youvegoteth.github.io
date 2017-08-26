@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 class SendProcess extends Component {
 
@@ -10,7 +11,13 @@ class SendProcess extends Component {
             <header className="major">
               <h2>Send Process</h2>
             </header>
-            <p>Send Process copy</p>
+            <p>You've sent ETH to " recipient email"</p>
+            <p>Contract Address: 0x36digithash</p>
+            <p>Progress: Waiting, In Progress, Confirmed</p>
+            <p>When Confired, TX Address: 0x36digithash</p>
+
+            <Link to="/send"><input type="submit" value="Send ETH to another email" class="special" /></Link>
+
           </div>
         </div>
       </div>

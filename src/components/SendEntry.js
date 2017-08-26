@@ -17,7 +17,7 @@ class SendEntry extends Component {
 							<input type="text" name="demo-name" id="demo-name" placeholder="Value in ETH" />
               <input type="email" name="demo-name" id="demo-name" placeholder="Recipient Email" />
 						</div>
-            <Link to="/send/*"><input type="submit" value="Send Message" class="special" /></Link>
+            <Link to="/send/*"><input type="submit" value="Send ETH" class="special" /></Link>
           </div>
         </div>
       </div>
