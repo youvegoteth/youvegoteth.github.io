@@ -1,6 +1,7 @@
 
 window.onload = function () {
-
+    console.log(web3.version);
+    console.log(contract().claimTransfer.getData);
     //default form values
     $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
@@ -27,7 +28,7 @@ window.onload = function () {
 
             //setup raw transaction
             var nonce = result;
-            var data = contract.claimTransfer.getData(_idx, forwarding_address);
+            var data = contract().claimTransfer.getData(_idx, forwarding_address);
             var payloadData = data; //??
             var fromAccount = _idx; //???
             console.log('fromAccount', fromAccount);

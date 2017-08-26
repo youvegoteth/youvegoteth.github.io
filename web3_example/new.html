@@ -11,27 +11,10 @@
 
     </head>
     <body>
-        <div id="send_eth">
-            <div>
-                <input type="text" placeholder="email" id="email" value="fo@bar.com"> 
-            </div>
-            <div>
-                <input type="text" placeholder="amount" id="amount" value="1">
-            </div>
-            <div>
-            <label for="tip">Tip the devs 1%</label> 
-                <input type="checkbox" id="tip" value="1" checked="checked">
-            </div>
+        <div id="new_address">
             <div>
                 <button id="new">Send ETH</button>
             </div>
-        </div>
-        <div id="send_eth_done" style="display:none;">
-        <h1>Congrats!</h1>
-        <p>You've sent Ethereum via transaction <span id="trans_id"></span>.  Your balance is now <span id="from_balance"></span>.</p>
-        <p>Private key to unlock it is: <span id="priv_key"></span></p>
-        <p>Address to unlock it is: <span id="address"></span>, balance is <span id="ephemeral_balance"></span></p>
-        <a id="continue" href="#"> Continue </a>
         </div>
     </body>
 </html>

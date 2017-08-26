@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("./Migrations.sol");
+var TransferIndex = artifacts.require("./TransferIndex.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(TransferIndex);
 };

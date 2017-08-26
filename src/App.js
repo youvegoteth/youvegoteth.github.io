@@ -9,10 +9,8 @@ import ReceiveProcess from './components/ReceiveProcess'
 import SendEntry from './components/SendEntry'
 import SendProcess from './components/SendProcess'
 import Other from './components/Other'
+import Header from './components/Header'
 
-import './css/oswald.css'
-import './css/open-sans.css'
-import './css/pure-min.css'
 import './App.css'
 
 class App extends Component {
@@ -79,6 +77,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Header/>
           <Home/>
           <Route exact path="/" component={SendEntry}/>
           <Route exact path="/send" component={SendEntry}/>
