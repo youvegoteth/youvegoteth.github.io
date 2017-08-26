@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 
 class Contact extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      storageValue: 0,
-      web3: null
-    }
-  }
-
-  componentWillMount() {
-
-  }
-
 
   render() {
     return (
-      <div className="App">
-        <p>Contact</p>
+      <div className="container">
+        <div className="row 150%">
+          <div className="6u 12u$(medium)">
+            <header className="major">
+              <h2>Contact</h2>
+            </header>
+            <p>Team Colorado blah blah blah</p>
+          </div>
+        </div>
       </div>
     );
   }

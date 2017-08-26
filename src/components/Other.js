@@ -9,13 +9,13 @@ class Other extends Component {
 
   render() {
     return (
-      <div>
+      <section id="two" className="main style1">
         <Education/>
         <Why/>
-        <About/>
         <FAQ/>
+        <About/>
         <Contact/>
-      </div>
+      </section>
     );
   }
 }
