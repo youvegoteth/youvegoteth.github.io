@@ -1,5 +1,6 @@
 {
   "name": "react-box",
+  "homepage": "http://youvegoteth.github.io/build_webpack",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
