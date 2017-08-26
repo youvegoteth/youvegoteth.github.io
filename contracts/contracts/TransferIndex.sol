@@ -9,7 +9,7 @@ contract TransferIndex {
   uint256 default_developer_tip_pct = 1;
   uint256 minimum_wei_amount = 30000; // should be at least 2x gas amount
   uint256 maximum_wei_amount = 1000000000000000000 * 100; // 100 eth
-  uint256 send_gas_amount = 3000;
+  uint256 send_gas_amount = 300000;
 
   // ------------------------------
   // indexed object
