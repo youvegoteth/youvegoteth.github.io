@@ -11,12 +11,13 @@ class SendProcess extends Component {
             <header className="major">
               <h2>Send Process</h2>
             </header>
+            <p>Send copy</p>
             <p>You've sent ETH to " recipient email"</p>
             <p>Contract Address: 0x36digithash</p>
             <p>Progress: Waiting, In Progress, Confirmed</p>
             <p>When Confired, TX Address: 0x36digithash</p>
 
-            <Link to="/send"><input type="submit" value="Send ETH to another email" class="special" /></Link>
+            <Link to="/send"><input type="submit" value="Send ETH to another email" className="special" /></Link>
 
           </div>
         </div>
