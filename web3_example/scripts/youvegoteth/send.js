@@ -50,7 +50,6 @@ window.onload = function () {
             if (_gas > maxGas){
                 _gas = maxGas;
             }
-            console.log('got gas', _gas);
             var _gasLimit = _gas * 1.01;
             contract().newTransfer.sendTransaction(
                 _disableDeveloperTip,
