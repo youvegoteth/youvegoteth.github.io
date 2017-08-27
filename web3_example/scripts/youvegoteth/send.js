@@ -1,6 +1,6 @@
 
 window.onload = function () {
-
+// address is owner, hash is private key
     $("idx_address").value = getParam('address');
     $("hash").value = getParam('hash');
 
@@ -53,12 +53,12 @@ window.onload = function () {
             var _gasLimit = _gas * 1.01;
             contract().newTransfer.sendTransaction(
                 _disableDeveloperTip,
-                _owner, 
-                {from :fromAccount, 
-                    gas: _gas, 
+                _owner,
+                {from :fromAccount,
+                    gas: _gas,
                     value: amount,
-                    gasLimit: _gasLimit, 
-                    gasPrice: gasPrice}, 
+                    gasLimit: _gasLimit,
+                    gasPrice: gasPrice},
             callback);
         });
     };
