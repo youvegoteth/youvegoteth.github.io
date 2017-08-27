@@ -693,6 +693,12 @@
 			opacity: 0.5;
 		}
 
+		.particles-js-canvas-el {
+			z-index: 1;
+			position: absolute;
+		}
+
+
 /* Main */
 
 	#main {
@@ -717,6 +723,8 @@
 		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
 		-ms-transition: opacity 1s ease, -ms-transform 1s ease;
 		transition: opacity 1s ease, transform 1s ease;
+		z-index: 2;
+		position: relative;
 	}
 
 		#main .avatar {
@@ -778,6 +786,7 @@
 		color: rgba(255, 255, 255, 0.75);
 		cursor: default;
 		text-align: center;
+		z-index: 2;
 	}
 
 		#footer .copyright {
@@ -799,7 +808,10 @@
 					border-left: 0;
 				}
 
+
+
 /* Wrapper */
+
 
 	#wrapper {
 		display: -moz-flex;
@@ -829,7 +841,7 @@
 	}
 
 		#wrapper > * {
-			z-index: 1;
+
 		}
 
 		#wrapper:before {
