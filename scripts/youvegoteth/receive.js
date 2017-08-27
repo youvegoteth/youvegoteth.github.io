@@ -48,6 +48,7 @@ window.onload = function () {
                 console.log(error);
                 alert('got an error :(');
             } else {
+                startConfetti();
                 $("send_eth").innerHTML = "<h1>Success 🚀!</h1> <a href='https://etherscan.io/tx/"+result+"'>See your transaction on the blockchain here</a>.<br><br>(it might take a few minutes to show up, depending upon network congestion)" ;
             }
         };
