@@ -6,57 +6,6 @@ Easily send [Ethereum](https://www.ethereum.org/) to an email.
 
 Want to pay your friends in [Ethereum](https://www.ethereum.org/), but they don't have a wallet? Now with [You've Got ETH](https://youvegoteth.github.io/) you can send [Ethereum](https://www.ethereum.org/) to an email address.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-You'll need to install:
-
-* [NodeJS](https://nodejs.org/en/)
-* [React](https://facebook.github.io/react/)
-* [Truffle](http://truffleframework.com/)
-* [MetaMask](https://metamask.io/)
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-## Running the Scripts/IPython Notebook/R File
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
