@@ -9,8 +9,7 @@ contract TransferIndex {
   uint256 default_developer_tip_pct = 1;
   uint256 minimum_wei_amount = 30000; // should be at least 2x gas amount
   uint256 maximum_wei_amount = 1000000000000000000 * 100; // 100 eth
-  uint256 send_gas_amount = 300000;
-  uint256 fund_ephemeral_contract_amount = 4476768 + 300000;
+  uint256 send_gas_amount = 3000000;
 
   // ------------------------------
   // indexed object
@@ -84,7 +83,7 @@ contract TransferIndex {
     //adds an index to the transfer index.
     transfer memory t;
     //set data that we have now
-    t.amount = msg.value - fund_ephemeral_contract_amount;
+    t.amount = msg.value - send_gas_amount;
     t.expiration_time = now + (60* 60 * 24 * 7); // 7 days
     t.from = msg.sender;
     t.initialized = true;
@@ -97,7 +96,7 @@ contract TransferIndex {
     transfers[_owner] = t;
 
     //send eth to the ephemeral address
-    _owner.transfer(fund_ephemeral_contract_amount);
+    _owner.transfer(send_gas_amount);
 
 
   }
