@@ -30,18 +30,22 @@ class Home extends Component {
           height: "100%"
         }} />
         <div className="IntroBar-width">
-          <h1 className="IntroBar-title">You've Got ETH</h1>
-          <h3 className="h3-thing">Evangalize Ethereum</h3>
+          <h1 className="IntroBar-title">Evangalize Ethereum</h1>
+          <h3 className="h3-thing">
+            Send Etherem to an a friends email address
+          </h3>
           <div className="IntroBar-benefits-div">
             <div className="IntroBar-benefits">
               <div className="circle"/>
                 <span className="IntroBar-benefits-span">Friendly</span>
-                <p>Send to friends who know little about Eth.</p>
+                <p>
+                  Send <a href="https://www.ethereum.org/">Ethereum</a> to <b>friends</b> who don't know about <a href="https://www.ethereum.org/">Ethereum</a>
+                </p>
               </div>
               <div className="IntroBar-benefits">
                 <div className="circle"/>
                   <span className="IntroBar-benefits-span">Fast</span>
-                  <p>Receive funds at the speed of SMTP.</p>
+                  <p>Receive funds at the speed of SMTP!</p>
                 </div>
               <div className="IntroBar-benefits">
                 <div className="circle"/>

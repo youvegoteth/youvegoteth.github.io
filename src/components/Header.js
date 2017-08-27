@@ -10,7 +10,8 @@ class Header extends Component {
           <div className="Header-left">
             <h2 className="Header-title">You've Got Eth</h2>
           </div>
-          <div className="Header-Right"></div>
+          <div className="Header-Right">
+          </div>
         </div>
       </div>
     );
