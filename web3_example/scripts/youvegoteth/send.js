@@ -1,6 +1,6 @@
 
 window.onload = function () {
-
+// address is owner, hash is private key
     $("idx_address").value = getParam('address');
     $("hash").value = getParam('hash');
 
@@ -45,22 +45,20 @@ window.onload = function () {
         };
 
         //send transfer to web3
-        console.log('sending');
         contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, function(error, result){
             var _gas = result;
             if (_gas > maxGas){
                 _gas = maxGas;
             }
-            console.log('got gas', _gas);
             var _gasLimit = _gas * 1.01;
             contract().newTransfer.sendTransaction(
                 _disableDeveloperTip,
-                _owner, 
-                {from :fromAccount, 
-                    gas: _gas, 
+                _owner,
+                {from :fromAccount,
+                    gas: _gas,
                     value: amount,
-                    gasLimit: _gasLimit, 
-                    gasPrice: gasPrice}, 
+                    gasLimit: _gasLimit,
+                    gasPrice: gasPrice},
             callback);
         });
     };
