@@ -10,7 +10,8 @@ class Contact extends Component {
             <header className="major">
               <h2>Get in touch with us!</h2>
             </header>
-              <p>We love hearing from our fans, if you need to contact us fill out the form below:</p>
+              <p>We love hearing from our fans, as well as people telling us how great we are.</p>
+              <p>If you need to contact us, fill out the form below:</p>
               <div class="split style1">
                 <section>
                   <form method="post" action="#">

@@ -3,3 +3,4 @@ build/contracts/*
 node_modules
 .env
 sftp-config.json
+npm-debug.log

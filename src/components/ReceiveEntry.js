@@ -38,7 +38,7 @@ deactivateLasers = () => {
                 <h2>Recieve Entry</h2>
               </header>
               <p>Recieve Entry copy</p>
-              <img src="../../public/video-player.png" alt="video wireframe" />
+              <img src="https://youtu.be/6Gf_kRE4MJU" alt="MetaMask Video" />
               <input type="text" name="demo-name" id="demo-name" placeholder="Metamask Wallet Address" />
               <input onClick={this.activateLasers} type="submit" value="Receive ETH" className="special" />
 
