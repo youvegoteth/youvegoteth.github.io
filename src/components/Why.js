@@ -8,26 +8,6 @@ class Why extends Component {
       <div className="container">
         <div className="row 150%">
           <div class="6u 12u$(medium)">
-            <ul class="major-icons">
-              <li>
-                <span class="icon style1 major fa-code"></span>
-              </li>
-              <li>
-                <span class="icon style2 major fa-bolt"></span>
-              </li>
-              <li>
-                <span class="icon style3 major fa-camera-retro"></span>
-              </li>
-              <li>
-                <span class="icon style4 major fa-cog"></span>
-              </li>
-              <li>
-                <span class="icon style5 major fa-desktop"></span>
-              </li>
-              <li>
-                <span class="icon style6 major fa-calendar"></span>
-              </li>
-            </ul>
           </div>
           <div class="6u$ 12u$(medium)">
             <header class="major">

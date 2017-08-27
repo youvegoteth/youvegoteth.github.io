@@ -15,7 +15,6 @@ class Receive_Process extends Component {
             <p>Progress: Waiting, In Progress, Confirmed</p>
             <p>When Confired, TX Address: 0x36digithash</p>
             <p>Congratulations! You're special! Welcome to the future of the internet!</p>
-
           </div>
         </div>
 
