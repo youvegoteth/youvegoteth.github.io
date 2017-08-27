@@ -33,6 +33,7 @@ if(network_id==9){
     //testrpc
     var contract_address = '0x2094fda6b63e007794eebd5e0cb6b93813d35b9d'; 
     setNetworkSelect(2);
+    etherscanDomain = 'localhost';
 }
 else if(network_id==3){
     //ropsten
@@ -44,7 +45,6 @@ else if(network_id==3){
     //mainnet
     var contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; 
     setNetworkSelect(0);
-    etherscanDomain = 'localhost';
 }
 var contract = function(){
     return web3.eth.contract(abi).at(contract_address);
