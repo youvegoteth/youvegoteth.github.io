@@ -21,7 +21,8 @@ window.onload = function () {
         var email = $("email").value;
         var amount = $("amount").value * weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
-
+        var accept_tos = $("tos").checked;
+        console.log(accept_tos);
         //validation
         if(!validateEmail(email)){
             alert('You must enter an email!');
@@ -29,6 +30,10 @@ window.onload = function () {
         }
         if(!isNumeric(amount)){
             alert('You must an number for the amount!');
+            return;
+        }
+        if(!accept_tos){
+            alert('You must accept the terms.');
             return;
         }
 
@@ -44,10 +49,11 @@ window.onload = function () {
             } else {
                 $("send_eth").style.display = 'none';
                 $("send_eth_done").style.display = 'block';
+                $("trans_link").href = "https://etherscan.io/tx/" + result;
                 var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value;
                 var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
                 $('link').value = link;
-                $("continue").href="mailto:"+email+"?subject=You've got ETH!&body=I've just sent you Ethereum.  Click here to claim it: " + link;
+                $("continue").href="mailto:"+email+"?subject=You've Got ETH!&body=I've just sent you Ethereum.  Click here to claim it: " + encodeURIComponent(link);
             }
         };
 

@@ -59,30 +59,41 @@
                         <div id="send_eth">
                         <h1>Send Ethereum Now.</h1>
                             <div>
-                                <input type="text" placeholder="email address" id="email" value=""> 
+                                Email address:
+                                <input type="text" placeholder="foo@bar.it" id="email" value=""> 
                             </div>
                             <div>
                                 <br>
-                                <input type="text" placeholder="1 ETH" id="amount" value="">
+                                Amount of ETH:
+                                <input type="text" placeholder="1.1" id="amount" value="">
                             </div>
                             <div>
-                            <br>
-                            <input type="checkbox" id="tip" value="1"  checked="checked">
-
-                            <label for="tip">Tip the devs 1%</label> 
+                                <br>
+                                <input type="checkbox" id="tos" value="1" >
+                                <label for="tos">I understand I am using alpha software, <br> provided under <a href="https://github.com/youvegoteth/youvegoteth.github.io/blob/master/license.txt">MIT liscense</a>.</label> 
+                                <br>
+                                <input type="checkbox" id="tip" value="1"  checked="checked">
+                                <label for="tip">I want to support free software. Tip the devs 1%.</label> 
                             </div>
 
-                          <a href="#" id="send" class="button">Send</a>
+                          <a href="#" id="send" class="button">Send 🐬</a>
 
                         </div>
                         
                         <div id="send_eth_done" style="display:none;">
                             <h1>Woo hoo!</h1>
-                            <h2>Your Ether is on the blockchain</h2>
+                            <h2>Your Ether is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
+                            <hr>
+                            <h1>You can now Send it</h1>
                             <p>Copy a link</p>
                             <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important;" />
+                            <br>
                             <p>- or - </p>
-                            <a id="continue" class="button" href="#"> Send Email </a>
+                            <a id="continue" class="button" href="#"> Send Email ✉️ </a>
+                            <br>
+                            <br>
+                            <p>- or - </p>
+                            <a id="" class="button" href="/">⬅ Start Over</a>
                         </div>
 
 					</section>
@@ -90,9 +101,9 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
+                            <li><a href="/">⬅ Start Over</a></li>
                             <li>&copy; You've Got Eth</li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="/">Start Over</a></li>
 						</ul>
 					</footer>
 
