@@ -33,10 +33,10 @@ bash helper_scripts/testrpc.bash
 2. Then, in another tab, run
 
 ```
-truffle deploy
+cd contracts; truffle deploy
 ```
 
-3. Set your metamask to point to your testRPC instance.
+3. Set your Metamask to point to your testRPC instance.
 
 4. Load [https://youvegoteth.github.io/](https://youvegoteth.github.io/) and use the app!
 
@@ -67,7 +67,7 @@ MIT Liscense (see liscense.txt)
 ## Acknowledgments
 
 * [BCG Digital Ventures](https://bcgdv.com/)
-* [Dappathon](http://dappathon/)
+* [Dappathon](http://dappathon.com/)
 
 <!-- Google Analytics -->
 <img src='https://ga-beacon.appspot.com/UA-105392375-1/youvegoteth/youvegoteth.github.io' style='width:1px; height:1px;' >
