@@ -30,7 +30,6 @@
 	ol, ul {
 		list-style: none;
 	}
-
 	blockquote, q {
 		quotes: none;
 	}
@@ -166,10 +165,6 @@
 			-webkit-transition: color 0.2s ease, text-shadow 0.2s ease;
 			-ms-transition: color 0.2s ease, text-shadow 0.2s ease;
 			transition: color 0.2s ease, text-shadow 0.2s ease;
-		}
-
-		a:hover {
-			color: #ff7496;
 		}
 
 	strong, b {
@@ -853,3 +848,12 @@
 		body.is-ie #wrapper {
 			height: 100%;
 		}
+
+		body #main a{
+			color: #fc7596;
+		}
+
+		body #main a:hover {
+			color: #ec5597;
+		}
+
