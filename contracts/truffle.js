@@ -7,7 +7,7 @@ var Web3 = require("web3");
 
 // Get our mnemonic and create an hdwallet
 var mnemonic = "solve couch unique spirit wine occur fine rhythm foot feature glory away";
-var mnemonic = "SECRET_MAINNET_MNEMONIC_GOES_HERE";
+//var mnemonic = "SECRET_MAINNET_MNEMONIC_GOES_HERE";
 var hdwallet = hdkey.fromMasterSeed(bip39.mnemonicToSeed(mnemonic));
 
 // Get the first account using the standard hd path.
@@ -40,7 +40,8 @@ module.exports = {
     mainnet: {
       network_id: 1,    // Official mainnet network id
       provider: mainnet_engine, // Use our custom provider
-      from: address     // Use the address we derived
+      from: address,     // Use the address we derived
+      gasPrice: '0x13AB6680' , ///
     },
     development: {
       host: "localhost",
