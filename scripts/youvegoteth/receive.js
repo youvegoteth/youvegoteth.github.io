@@ -1,6 +1,16 @@
 
 window.onload = function () {
 
+        setTimeout(function(){
+            $("loading").style.display = "none";
+            if(!web3.currentProvider.isMetaMask){
+                $("step_zero").style.display = "block";
+            } else {
+                $("send_eth").style.display = "block";
+            }
+        },1000);
+
+
         if(!getParam('address') || !getParam('key')){
             $("send_eth").innerHTML = "<h1>Error 🤖</h1> Invalid Link.  Please check your link and try again" ;
             return;
@@ -9,6 +19,7 @@ window.onload = function () {
     //default form values
     $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
+    $("amount_txt").innerHTML = getParam('amount');
 
     // When 'Generate Account' is clicked
     $("receive").onclick = function() {
