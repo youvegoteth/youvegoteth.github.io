@@ -108,7 +108,14 @@
                         <ul class="copyright">
                             <li><a href="/">⬅ Start Over</a></li>
                             <li>&copy; You've Got Eth</li>
-                            <li><a href="about.html">About</a></li>
+                            <li style="border-right: solid 1px rgba(255, 255, 255, 0.5); padding-right: 0.85em;"><a href="about.html">About</a></li>
+                            <li style="border-left: none;">
+                                <select id="network" style="background:transparent" onchange="onNetworkChange();" >
+                                    <option value="0">Mainnet</option>
+                                    <option value="3">Ropsten</option>
+                                    <option value="9">TestRPC</option>
+                                </select>
+                            </li>
                         </ul>
                     </footer>
 
