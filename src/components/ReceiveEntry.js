@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
+// import '../../web3_example/scripts/youvegoteth'
+
 import ReceiveProcess from './ReceiveProcess'
 
 import '../css/main.css'

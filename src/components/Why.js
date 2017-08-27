@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import '../css/education.css'
+// import '../css/education.css'
 
 class Why extends Component {
   render() {

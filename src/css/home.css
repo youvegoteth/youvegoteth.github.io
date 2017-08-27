@@ -1,0 +1,107 @@
+.App-intro-bar {
+  padding: 10px;
+    padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  background-color: #4686a0;
+  background-image: linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
+  color: white;
+}
+
+.home-header {
+  display: flex;
+  justify-content: center;
+  background-color: #4686a0;
+  background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
+  width: 100%;
+}
+
+.inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  flex: 1;
+  max-width: 800px;
+  text-align: center;
+  color: white;
+}
+
+.title {
+  font-size: 1.5em;
+  letter-spacing: 2px;
+}
+
+.subtext {
+  font-size: 1.15em;
+  padding: 40px;
+  padding-top: 10px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.IntroBar-width {
+  flex: 1;
+  max-width: 700px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.IntroBar-title {
+    font-size: 2.25em;
+    text-align: center;
+    padding: 20px;
+    padding-top: 50px;
+    font-weight: bold;
+}
+
+.IntroBar-benefits-span {
+  font-size: 1.0em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.IntroBar-benefits-div {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.IntroBar-benefits-span {
+  padding-top: 20px;
+}
+
+.IntroBar-benefits {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.circle {
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.h3-thing {
+  font-size: .9em;
+  font-weight: 200;
+  text-align: center;
+}
+
+p {
+  font-size: .75em;
+}
+
+h2 {
+  text-align: center;
+}

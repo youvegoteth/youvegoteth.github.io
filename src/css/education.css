@@ -1,0 +1,42 @@
+.container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  position: relative;
+}
+
+.row  {
+  flex: 1;
+  max-width: 700px;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  letter-spacing: normal;
+  padding-bottom: 40px;
+}
+
+.title {
+  font-size: 1.05em;
+  letter-spacing: 1px;
+}
+
+
+.major {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.mini-major {
+  align-items: center;
+}
+
+.h2-underline {
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  display: inline;
+  padding-bottom: 20px;
+}
