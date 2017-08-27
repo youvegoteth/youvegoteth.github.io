@@ -8,8 +8,14 @@ else if(network_id==3){
     var contract_address = '0xE95215CdbEfDbeB58559D231E07278880FcaeC15'; //ropsten latest
     
 } else {
-    var contract_address = 'TODO'; //mainnet
+    var contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; //mainnet
 }
 var contract = function(){
     return web3.eth.contract(abi).at(contract_address);
 }
+setTimeout(function(){
+    console.log(web3);
+    if(!web3){
+        alert("You must install Metamask to continue.");
+    }
+},1000);

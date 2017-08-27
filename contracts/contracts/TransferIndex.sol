@@ -31,7 +31,7 @@ contract TransferIndex {
   mapping (address => transfer) public transfers;
 
   function TransferIndex() {
-    devteam = msg.sender;
+    devteam = '0xD3d280C2866eAa795FC72BD850C48E7cCE166E23';
   }
 
   // ------------------------------
