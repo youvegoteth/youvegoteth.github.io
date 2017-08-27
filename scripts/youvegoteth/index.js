@@ -13,9 +13,3 @@ else if(network_id==3){
 var contract = function(){
     return web3.eth.contract(abi).at(contract_address);
 }
-setTimeout(function(){
-    console.log(web3);
-    if(!web3){
-        alert("You must install Metamask to continue.");
-    }
-},1000);
