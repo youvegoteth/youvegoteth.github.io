@@ -4,7 +4,11 @@ Easily send [Ethereum](https://www.ethereum.org/) to an email.
 
 # Demo
 
-Play with the mainnet demo at [https://youvegoteth.github.io/](https://youvegoteth.github.io/) 
+Play with the demo at [https://youvegoteth.github.io/](https://youvegoteth.github.io/) .  The demo app supports
+
+* TestRPC
+* Ropsten
+* Mainnet
 
 Or watch the below video:
 <a href="https://www.youtube.com/watch?v=dk_Qz_cwNVk"><img src='https://github.com/youvegoteth/youvegoteth.github.io/raw/master/images/Image%202017-08-27%20at%2011.25.28%20AM.png'></a>
@@ -17,6 +21,33 @@ Want to pay your friends in [Ethereum](https://www.ethereum.org/), but they don'
 # Architecture
 
 <img src='https://github.com/youvegoteth/youvegoteth.github.io/raw/master/images/architecture.png'>
+
+# Running on testRPC
+
+1. Run 
+
+```
+bash helper_scripts/testrpc.bash
+```
+
+2. Then, in another tab, run
+
+```
+truffle deploy
+```
+
+3. Set your metamask to point to your testRPC instance.
+
+4. Load [https://youvegoteth.github.io/](https://youvegoteth.github.io/) and use the app!
+
+# Running on mainnet or ropsten
+
+You should be good to go if you 
+
+1. Set Metamask to point at the correct network.
+
+2. Load [https://youvegoteth.github.io/](https://youvegoteth.github.io/) and use the app!
+
 
 ## Authors
 
