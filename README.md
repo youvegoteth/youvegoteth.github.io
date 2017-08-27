@@ -2,6 +2,10 @@
 
 Easily send [Ethereum](https://www.ethereum.org/) to an email.
 
+# Demo
+
+View a demo at [https://youvegoteth.github.io/](https://youvegoteth.github.io/) (testRPC only right now -- will be on the mainnet soon!)
+
 ## Project Overview
 
 Want to pay your friends in [Ethereum](https://www.ethereum.org/), but they don't have a wallet? Now with [You've Got ETH](https://youvegoteth.github.io/) you can send [Ethereum](https://www.ethereum.org/) to an email address.
