@@ -33,15 +33,15 @@ module.exports = {
   migrations_directory: "./migrations",
   networks: {
     ropsten: {
-          network_id: 3,    // Official ropsten network id
-          provider: testnet_engine, // Use our custom provider
-          from: address     // Use the address we derived
-        },
+      network_id: 3,    // Official ropsten network id
+      provider: testnet_engine, // Use our custom provider
+      from: address     // Use the address we derived
+    },
     mainnet: {
-          network_id: 1,    // Official mainnet network id
-          provider: mainnet_engine, // Use our custom provider
-          from: address     // Use the address we derived
-        },
+      network_id: 1,    // Official mainnet network id
+      provider: mainnet_engine, // Use our custom provider
+      from: address     // Use the address we derived
+    },
     development: {
       host: "localhost",
       port: 8545,

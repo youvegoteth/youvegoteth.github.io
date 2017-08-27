@@ -10,10 +10,10 @@ function makeAlias(object, name) {
 }
 
 var passphrase = 'youvegoteth';
-var gasPrice = 1000000000 * 2;
+var gasPrice = 1;
 var gas = 100000 * 2;
 var gasLimit = gas * 2;
-var maxGas = 4476768;
+var maxGas = 4468057;
 
 // Make docuemtn.getElementById aliased by $
 $ = makeAlias(document, 'getElementById');
@@ -23,9 +23,17 @@ if(Accounts){
   var Accounts = new Accounts();
 
   // Set web3 provider
+  var host = ''
+  if(network_id==9){
+      host = "http://localhost:8545"; //testrpc
+  }
+  else if(network_id==3){
+      host = 'https://ropsten.infura.io/'; //ropsten
+  } else {
+      host = 'https://mainnet.infura.io/'; //mainnet
+  }
   var provider = new HookedWeb3Provider({
-//    host: "http://localhost:8545",
-    host: 'https://ropsten.infura.io/',
+    host: host,
     transaction_signer: Accounts
   });
   web3.setProvider(provider);
