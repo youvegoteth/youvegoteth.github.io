@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SendProcess from './SendProcess'
+var Accounts = require('ethereumjs-accounts');
+var accounts = new Accounts({minPassphraseLength: 0});
 
 class SendEntry extends Component {
 
@@ -13,6 +15,20 @@ class SendEntry extends Component {
     num_eth: ""
   };
 }
+
+  componentDidMount () {
+    var newAccount = accounts.new('');
+    //TODO: import scripts
+    // need to pass Accounts
+    var _owner = newAccount.address;
+    var _private_key = newAccount.private;
+    this.setState({
+      newAccount: newAccount,
+      _owner: _owner,
+      _private_key: _private_key
+    })
+    // document.location.href = 'send.html?address=' + _owner + '&hash=' + _private_key;
+  }
 
   activateLasers = () => {
     this.setState({
