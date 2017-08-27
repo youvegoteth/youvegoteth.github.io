@@ -56,10 +56,24 @@
                                 </a>
                             </span>
                         </header>
+                        <div id="loading">
+                            <h1>Loading</h1>
+                            <img src="images/loading.gif">
+                        </div>
 
-                        <h1>Receive Ethereum Now.</h1>
+                        <div id="step_zero" style="display:none;">
+                            <h1>You've Got <span id="amount_txt"></span> ETH!</h1>
+                            <p>To claim it, please install MetaMask and refresh the page.</p>
+                            <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" id="receive" class="button">Install Metamask 🐬</a>
+                            <br>
+                            <br>
+                            <h2>What is Metamask?</h2>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allowfullscreen></iframe>
 
-                        <div id="send_eth">
+                        </div>
+                        <div id="send_eth" style="display:none;">
+                            <h1>Receive Ethereum Now.</h1>
+                            
                             <div>
                                 <input type="hidden" placeholder="idx_address" id="idx_address" value="">
                             </div>
@@ -73,7 +87,7 @@
                             </div>
                             <div>
                                 <br>
-                                <a href="#" id="receive" class="button">Claim Eth</a>
+                                <a href="#" id="receive" class="button">Claim Eth 🐬</a>
                                 <br>
                             </div>
                         </div>
@@ -89,9 +103,9 @@
                 <!-- Footer -->
                     <footer id="footer">
                         <ul class="copyright">
+                            <li><a href="/">⬅ Start Over</a></li>
                             <li>&copy; You've Got Eth</li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="/">Start Over</a></li>
                         </ul>
                     </footer>
 

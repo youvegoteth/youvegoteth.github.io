@@ -1,16 +1,46 @@
 
 window.onload = function () {
 
+        setTimeout(function(){
+            $("loading").style.display = "none";
+            if(!web3.currentProvider.isMetaMask){
+                $("step_zero").style.display = "block";
+            } else {
+                $("send_eth").style.display = "block";
+            }
+        },1000);
+
+
+        if(!getParam('address') || !getParam('key')){
+            $("send_eth").innerHTML = "<h1>Error 🤖</h1> Invalid Link.  Please check your link and try again" ;
+            return;
+        }
+
     //default form values
     $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
+    $("amount_txt").innerHTML = getParam('amount');
 
     // When 'Generate Account' is clicked
     $("receive").onclick = function() {
         //get form data
         var private_key = $("private_key").value;
         var _idx = $("idx_address").value;
-        var forwarding_address = $("forwarding_address").value;
+        var forwarding_address = $("forwarding_address").value.trim();
+
+        if(!forwarding_address || forwarding_address == '0x0'){
+            alert("Not a valid forwarding address.");
+            return;
+        }
+
+        if(!_idx || _idx == '0x0'){
+            alert("Invalid Link.  Please check your link and try again");
+            return;
+        }
+        if(!private_key){
+            alert("Invalid Link.  Please check your link and try again");
+            return;
+        }
 
         //set up callback to sendRawTransaction
         var callback = function(error, result){
@@ -18,7 +48,7 @@ window.onload = function () {
                 console.log(error);
                 alert('got an error :(');
             } else {
-                $("send_eth").innerHTML = "Success! <a href='https://etherscan.io/tx/"+result+"'>See your transaction on the blockchain</a>." ;
+                $("send_eth").innerHTML = "<h1>Success 🚀!</h1> <a href='https://etherscan.io/tx/"+result+"'>See your transaction on the blockchain</a>." ;
             }
         };
 
