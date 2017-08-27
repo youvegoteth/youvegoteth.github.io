@@ -30,9 +30,9 @@ class Home extends Component {
           height: "100%"
         }} />
         <div className="IntroBar-width">
-          <h1 className="IntroBar-title">You've Got ETH</h1>
+          <h1 className="IntroBar-title">Evangalize Ethereum</h1>
           <h3 className="h3-thing">
-            Evangalize<a href="https://www.ethereum.org/">Ethereum</a>
+            Send Etherem to an a friends email address
           </h3>
           <div className="IntroBar-benefits-div">
             <div className="IntroBar-benefits">

@@ -11,9 +11,6 @@ class Header extends Component {
             <h2 className="Header-title">You've Got Eth</h2>
           </div>
           <div className="Header-Right">
-            <ul>
-              <li></li>
-            </ul>
           </div>
         </div>
       </div>
