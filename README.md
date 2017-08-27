@@ -4,7 +4,7 @@ Easily send [Ethereum](https://www.ethereum.org/) to an email.
 
 # Demo
 
-Play with the demo at [https://youvegoteth.github.io/](https://youvegoteth.github.io/) (testRPC only right now -- will be on the mainnet soon!)
+Play with the mainnet demo at [https://youvegoteth.github.io/](https://youvegoteth.github.io/) 
 
 Or watch the below video:
 <a href="https://www.youtube.com/watch?v=dk_Qz_cwNVk"><img src='https://github.com/youvegoteth/youvegoteth.github.io/raw/master/images/Image%202017-08-27%20at%2011.25.28%20AM.png'></a>
