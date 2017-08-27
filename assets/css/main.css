@@ -857,3 +857,14 @@
 			color: #ec5597;
 		}
 
+		.proPic {
+			width: 25vmin;
+			margin: 0.75vmin;
+			border-radius: 1vmin;
+			filter: grayscale(100%);
+		}
+
+		.proName {
+			margin-left: 4.5vmin;
+			margin-right: 4.5vmin;
+		}
