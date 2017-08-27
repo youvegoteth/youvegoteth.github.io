@@ -45,7 +45,6 @@ window.onload = function () {
         };
 
         //send transfer to web3
-        console.log('sending');
         contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, function(error, result){
             var _gas = result;
             if (_gas > maxGas){
