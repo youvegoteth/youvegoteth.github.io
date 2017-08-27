@@ -34,14 +34,14 @@ window.onload = function () {
                 var data = contract().claimTransfer.getData(_idx, forwarding_address);
                 var payloadData = data; //??
                 var fromAccount = _idx; //???
-                var gas = result1;
+                var gas = 2.5 * 1000 * 100 ;
                 if(gas > maxGas){
                     gas = maxGas;
                 }
                 var gasLimit = gas;
                 var rawTx = {
                     nonce: web3.toHex(nonce),
-                    gasPrice: web3.toHex(gasPrice),
+                    gasPrice: web3.toHex(1),
                     gasLimit: web3.toHex(gasLimit),
                     gas: web3.toHex(gas),
                     to: contract_address,
