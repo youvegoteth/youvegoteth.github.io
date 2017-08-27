@@ -1,6 +1,19 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+    Identity by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
     <head>
+        <title>You've Got ETH</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
         <script src="scripts/ethereumjs/ethereumjs-accounts.js"></script>
         <script src="scripts/ethereumjs/web3.js"></script>
@@ -10,31 +23,82 @@
         <script src="scripts/youvegoteth/pre.js"></script>
         <script src="scripts/youvegoteth/receive.js"></script>
 
+        <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+
+
     </head>
-    <body>
-        <div id="send_eth">
-            <div>
-                Ephemeral Contract Address:
-                <br>
-                <input type="text" placeholder="idx_address" id="idx_address" value=""> 
+    <body class="is-loading">
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+
+                <!-- Main -->
+                    <section id="main">
+                        <header>
+                            <span class="avatar"><img src="images/icon.png" alt="" /></span>
+                        </header>
+
+                        <h1>Receive Ethereum Now.</h1>
+
+                        <div id="send_eth">
+                            <div>
+                                <input type="hidden" placeholder="idx_address" id="idx_address" value=""> 
+                            </div>
+                            <div>
+                                <input type="hidden" placeholder="private_key" id="private_key" value=""> 
+                            </div>
+                            <div>
+                                Forwarding Address:
+                                <br>
+                                <input type="text" placeholder="forwarding_address" id="forwarding_address" value="0x0"> 
+                            </div>
+                            <div>
+                                <br>
+                                <a href="#" id="receive" class="button">Claim Eth</a>
+                                <br>
+                            </div>
+                        </div>
+                        <div id="send_eth_done" style="display:none;">
+                            <h1>Congrats!</h1>
+                            <p>You've received Ethereum via transaction <span id="trans_id"></span>.</p>
+                        </div>
+
+
+
+                    </section>
+
+                <!-- Footer -->
+                    <footer id="footer">
+                        <ul class="copyright">
+                            <li>&copy; You've Got Eth</li><li><a href="/">Start Over</a></li>
+                        </ul>
+                    </footer>
+
             </div>
-            <div>
-                Priv Key:
-                <br>
-                <input type="text" placeholder="private_key" id="private_key" value=""> 
-            </div>
-            <div>
-                Forwarding Address:
-                <br>
-                <input type="text" placeholder="forwarding_address" id="forwarding_address" value="0x0"> 
-            </div>
-            <div>
-                <button id="receive">Receive ETH</button>
-            </div>
-        </div>
-        <div id="send_eth_done" style="display:none;">
-            <h1>Congrats!</h1>
-            <p>You've received Ethereum via transaction <span id="trans_id"></span>.</p>
-        </div>
+
+        <!-- Scripts -->
+            <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+            <script>
+                if ('addEventListener' in window) {
+                    window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+                    document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+                }
+            </script>
+
     </body>
 </html>

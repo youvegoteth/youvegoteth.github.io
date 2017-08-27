@@ -15,9 +15,12 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
+        <script src="scripts/ethereumjs/ethereumjs-accounts.js"></script>
+        <script src="scripts/ethereumjs/web3.js"></script>
+        <script src="scripts/ethereumjs/hooked-web3-provider.js"></script>
         <script src="scripts/youvegoteth/index.js"></script>
         <script src="scripts/youvegoteth/pre.js"></script>
-        <script src="scripts/youvegoteth/send.js"></script>
+        <script src="scripts/youvegoteth/new.js"></script>
 
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -47,45 +50,17 @@
 					<section id="main">
 						<header>
 							<span class="avatar"><img src="images/icon.png" alt="" /></span>
+							<h1>Fast.  Easy.   Free</h1>
+							<p>Send Ethereum to any Email Address</p>
 						</header>
-
-                        <input type='hidden' name='idx_address' id='idx_address' value=''>
-                        <input type='hidden' name='hash' id='hash' value='hash'>
-                        <div id="send_eth">
-                        <h1>Send Ethereum Now.</h1>
-                            <div>
-                                <input type="text" placeholder="email address" id="email" value=""> 
-                            </div>
-                            <div>
-                                <br>
-                                <input type="text" placeholder="1 ETH" id="amount" value="">
-                            </div>
-                            <div>
-                            <br>
-                            <input type="checkbox" id="tip" value="1"  checked="checked">
-
-                            <label for="tip">Tip the devs 1%</label> 
-                            </div>
-
-                          <a href="#" id="send" class="button">Send</a>
-
-                        </div>
-                        
-                        <div id="send_eth_done" style="display:none;">
-                            <h1>Woo hoo!</h1>
-                            <h2>Your Ether is on the blockchain</h2>
-                            <p>Copy a link</p>
-                            <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important;" />
-                            <p>- or - </p>
-                            <a id="continue" class="button" href="#"> Send Email </a>
-                        </div>
+                      <a href="#" id="new" class="button">Get Started</a>
 
 					</section>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-                            <li>&copy; You've Got Eth</li><li><a href="/">Start Over</a></li>
+                            <li>&copy; You've Got Eth</li>
 						</ul>
 					</footer>
 

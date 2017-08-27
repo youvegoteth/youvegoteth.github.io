@@ -18,7 +18,7 @@ window.onload = function () {
                 console.log(error);
                 alert('got an error :(');
             } else {
-                $("send_eth").innerHTML = "success ! " + result;
+                $("send_eth").innerHTML = "Success! <a href='https://etherscan.io/tx/"+result+"'>See your transaction on the blockchain</a>." ;
             }
         };
 

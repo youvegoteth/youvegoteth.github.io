@@ -1,3 +1,11 @@
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
 
 window.onload = function () {
 // address is owner, hash is private key
@@ -14,6 +22,16 @@ window.onload = function () {
         var amount = $("amount").value * weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
 
+        //validation
+        if(!validateEmail(email)){
+            alert('You must enter an email!');
+            return;
+        }
+        if(!isNumeric(amount)){
+            alert('You must an number for the amount!');
+            return;
+        }
+
         //generate ephemeral account
         var _owner = $("idx_address").value;
         var _private_key = $("hash").value;
@@ -26,21 +44,10 @@ window.onload = function () {
             } else {
                 $("send_eth").style.display = 'none';
                 $("send_eth_done").style.display = 'block';
-                $("trans_id").innerHTML = result;
-                $("priv_key").innerHTML = _private_key;
-                $("address").innerHTML = _owner;
-                $("continue").href = "receive.html?key=" + _private_key + "&address=" + _owner;
-                //get new balances of accounts
-                var refreshBalances = function(){
-                    web3.eth.getBalance(_owner,function(errors,result){
-                        $("ephemeral_balance").innerHTML = result;
-                    });
-                    web3.eth.getBalance(fromAccount,function(errors,result){
-                        $("from_balance").innerHTML = result;
-                    });
-                    setTimeout(refreshBalances, 1000);
-                };
-                refreshBalances();
+                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value;
+                var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
+                $('link').value = link;
+                $("continue").href="mailto:"+email+"?subject=You've got ETH!&body=I've just sent you Ethereum.  Click here to claim it: " + link;
             }
         };
 
