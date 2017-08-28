@@ -24,6 +24,22 @@ Want to pay your friends in [Ethereum](https://www.ethereum.org/), but they don'
 
 <img src='https://github.com/youvegoteth/youvegoteth.github.io/raw/master/images/architecture.png'>
 
+# How it works
+
+Eth that is in escrow in the system is stored in [the smart contract](https://github.com/youvegoteth/youvegoteth.github.io/blob/master/contracts/contracts/TransferIndex.sol).
+
+This contract is deployed on the mainnet at ropsten at :
+
+* Mainnet: [0x7aca51dbe152313987adca472ac1d033b640f771](https://etherscan.io/address/0x7aca51dbe152313987adca472ac1d033b640f771
+)
+* Ropsten: [0xE95215CdbEfDbeB58559D231E07278880FcaeC15](https://etherscan.io/address/0xE95215CdbEfDbeB58559D231E07278880FcaeC15)
+
+When ETH is placed into the smart contract, it is stored in such a way that it can only be accessed by the private key of an ephemeral address, generated on the fly during the checkout process.  
+
+This private key is then passed to the receipient, and after the user is educated about metamask and Ethereum, the private key is what is used to forward the ETH to a secure ethereum wallet.
+
+For an end to end visualization of the flow, [please see this youtube video](https://www.youtube.com/watch?v=dk_Qz_cwNVk).
+
 # Running on testRPC
 
 1. Run 
