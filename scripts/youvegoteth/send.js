@@ -20,6 +20,7 @@ window.onload = function () {
         //get form data
         var email = $("email").value;
         var amount = $("amount").value * weiPerEther;
+        var amountInEth = amount * 1.0 / weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
         var accept_tos = $("tos").checked;
         console.log(accept_tos);
@@ -32,13 +33,13 @@ window.onload = function () {
             alert('You must an number for the amount!');
             return;
         }
-        var min_amount = 6000000/1000000000000000000;
+        var min_amount = 6000000*1.0/weiPerEther;
         var max_amount = 100;
-        if(amount > max_amount){
+        if(amountInEth > max_amount){
             alert('You can only send a maximum of' + max_amount + ' ETH.');
             return;
         }
-        if(amount < min_amount){
+        if(amountInEth < min_amount){
             alert('You can minimum of' + min_amount + ' ETH.');
             return;
         }
