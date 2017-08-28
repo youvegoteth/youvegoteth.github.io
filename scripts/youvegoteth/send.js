@@ -34,7 +34,7 @@ window.onload = function () {
             return;
         }
         var min_amount = 6000000*1.0/weiPerEther;
-        var max_amount = 100;
+        var max_amount = 5;
         if(amountInEth > max_amount){
             alert('You can only send a maximum of' + max_amount + ' ETH.');
             return;
