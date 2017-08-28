@@ -32,6 +32,17 @@ window.onload = function () {
             alert('You must an number for the amount!');
             return;
         }
+        var min_amount = 6000000/1000000000000000000;
+        var max_amount = 100;
+        if(amount > max_amount){
+            alert('You can only send a maximum of' + max_amount + ' ETH.');
+            return;
+        }
+        if(amount < min_amount){
+            alert('You can minimum of' + min_amount + ' ETH.');
+            return;
+        }
+
         if(!accept_tos){
             alert('You must accept the terms.');
             return;
