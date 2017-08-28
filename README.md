@@ -32,7 +32,7 @@ This contract is deployed on the mainnet at ropsten at :
 
 * Mainnet: [0x7aca51dbe152313987adca472ac1d033b640f771](https://etherscan.io/address/0x7aca51dbe152313987adca472ac1d033b640f771
 )
-* Ropsten: [0xE95215CdbEfDbeB58559D231E07278880FcaeC15](https://etherscan.io/address/0xE95215CdbEfDbeB58559D231E07278880FcaeC15)
+* Ropsten: [0xE95215CdbEfDbeB58559D231E07278880FcaeC15](https://ropsten.etherscan.io/address/0xE95215CdbEfDbeB58559D231E07278880FcaeC15)
 
 When ETH is placed into the smart contract, it is stored in such a way that it can only be accessed by the private key of an ephemeral address, generated on the fly during the checkout process.  
 
