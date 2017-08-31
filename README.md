@@ -1,8 +1,8 @@
-UPDATE - 8/27/2017 -- Vote for us in the [Dappathon Community Vote!](https://goo.gl/forms/ey0y0o6UoYEFMPE62)
-
 # You've Got ETH
 
 Easily send [Ethereum](https://www.ethereum.org/) to an email.
+
+_The You've Got ETH team is the winner of the community prize at the August 2017 [Dappathon](http://dappathon.com/)._ 
 
 # Demo
 
