@@ -72,7 +72,7 @@
                         </div>
 
                         <div id="step_zero" style="display:none;">
-                            <h1>You've Got <span id="amount_txt"></span> ETH!</h1>
+                            <h1 id="zeroh1">You've Got ETH!</h1>
                             <p>To claim it, please install MetaMask and refresh the page.</p>
                             <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" id="install" class="button">Install Metamask 🐬</a>
                             <br>
@@ -82,7 +82,7 @@
 
                         </div>
                         <div id="send_eth" style="display:none;">
-                            <h1>Receive Ethereum Now.</h1>
+                            <h1 id="oneh1">Receive Ethereum Now.</h1>
                             
                             <div>
                                 <input type="hidden" placeholder="idx_address" id="idx_address" value="">
@@ -91,13 +91,13 @@
                                 <input type="hidden" placeholder="private_key" id="private_key" value="">
                             </div>
                             <div>
-                                To Address:
+                                Forward it to a permanent address:
                                 <br>
                                 <input type="text" placeholder="forwarding_address" id="forwarding_address" value="0x0">
                             </div>
                             <div>
                                 <br>
-                                <a href="#" id="receive" class="button">Claim Eth 🐬</a>
+                                <a href="#" id="receive" class="button">Claim <span id="tokenName">Eth</span> 🐬</a>
                                 <br>
                             </div>
                         </div>

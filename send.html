@@ -23,6 +23,7 @@
 
         <script src="scripts/youvegoteth/index.js"></script>
         <script src="scripts/youvegoteth/pre.js"></script>
+        <script src="scripts/youvegoteth/tokens.js"></script>
         <script src="scripts/youvegoteth/send.js"></script>
         <script src="scripts/youvegoteth/web3alert.js"></script>
 
@@ -65,15 +66,17 @@
                         <input type='hidden' name='idx_address' id='idx_address' value=''>
                         <input type='hidden' name='hash' id='hash' value='hash'>
                         <div id="send_eth">
-                        <h1>Send Ethereum Now.</h1>
+                        <h1>Send Now.</h1>
                             <div>
                                 Email address:
-                                <input type="text" placeholder="foo@bar.it" id="email" value="">
+                                <input type="text" placeholder="foo@bar.it" id="email" value="" style="width: 350px; margin-left: auto; margin-right: auto;">
                             </div>
                             <div>
                                 <br>
-                                Amount of ETH:
-                                <input type="text" placeholder="1.1" id="amount" value="">
+                                Amount of  <select id="token" style="width:70px; margin-bottom: 10px; display: inline;" >
+                                    <option value="0x0">ETH</option>
+                                </select>
+                                <input type="text" placeholder="1.1" id="amount" value="" style="width: 170px; display: inline;">
                             </div>
                             <div>
                                 <br>
@@ -90,7 +93,7 @@
 
                         <div id="send_eth_done" style="display:none;">
                             <h1>Woo hoo!</h1>
-                            <h2>Your Ether is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
+                            <h2>Your <span id="tokenName">ETH</span> is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
                             <hr>
                             <h1>You can now Send it</h1>
                             <p>Copy a link</p>

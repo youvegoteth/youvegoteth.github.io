@@ -8,9 +8,17 @@ function isNumeric(n) {
 }
 
 window.onload = function () {
+    var min_send_amt_wei = 6000000;
 // address is owner, hash is private key
     $("idx_address").value = getParam('address');
     $("hash").value = getParam('hash');
+
+    tokens.forEach(function(ele){
+        var option = document.createElement("option");
+        option.text = ele.name;
+        option.value = ele.addr;
+        $("token").add(option);
+    });
 
     // When 'Generate Account' is clicked
     $("send").onclick = function() {
@@ -23,7 +31,14 @@ window.onload = function () {
         var amountInEth = amount * 1.0 / weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
         var accept_tos = $("tos").checked;
-        console.log(accept_tos);
+        var token = $("token").value;
+        var isSendingETH = (token == '0x0' || token == '0x0000000000000000000000000000000000000000');
+        var tokenDetails = tokenAddressToDetails(token);
+        var tokenName = 'ETH';
+        if(!isSendingETH){
+            tokenName = tokenDetails.name;
+        }
+
         //validation
         if(!validateEmail(email)){
             alert('You must enter an email!');
@@ -33,14 +48,17 @@ window.onload = function () {
             alert('You must an number for the amount!');
             return;
         }
-        var min_amount = 6000000*1.0/weiPerEther;
+        var min_amount = min_send_amt_wei*1.0/weiPerEther;
         var max_amount = 5;
+        if(!isSendingETH){
+            max_amount = 1000;
+        }
         if(amountInEth > max_amount){
-            alert('You can only send a maximum of' + max_amount + ' ETH.');
+            alert('You can only send a maximum of ' + max_amount + ' '+tokenName+'.');
             return;
         }
         if(amountInEth < min_amount){
-            alert('You can minimum of' + min_amount + ' ETH.');
+            alert('You can minimum of' + min_amount + ' '+tokenName+'.');
             return;
         }
 
@@ -53,16 +71,17 @@ window.onload = function () {
         var _owner = $("idx_address").value;
         var _private_key = $("hash").value;
 
-        //set up callback for web3 call to newTransfer
-        var callback = function(error, result){
+        //set up callback for web3 call to final transfer
+        var final_callback = function(error, result){
             if(error){
                 console.log(error);
                 alert('got an error :(');
             } else {
                 $("send_eth").style.display = 'none';
+                $("tokenName").innerHTML = tokenName;
                 $("send_eth_done").style.display = 'block';
                 $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
-                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id;
+                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName;
                 var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
                 $('link').value = link;
                 var warning = "";
@@ -71,12 +90,43 @@ window.onload = function () {
                 } else if(network_id == 9){
                     warning = "(TestRPC)";
                 }
-                $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" ETH!&body=I've just sent you Ethereum.  Click here to claim it: " + encodeURIComponent(link);
+                $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
             }
         };
 
+        //set up callback for web3 call to erc20 callback
+        var erc20_callback = function(error, result){
+            if(error){
+                console.log(error);
+                alert('got an error :(');
+            } else {
+                token_contract(token).approve.estimateGas(contract_address, amount, function(error, result){
+                    var _gas = result;
+                    if (_gas > maxGas){
+                        _gas = maxGas;
+                    }
+                    var _gasLimit = _gas * 1.01;
+                    token_contract(token).approve.sendTransaction(
+                        contract_address, 
+                        amount, 
+                        {from :fromAccount, gas:gas, gasLimit: gasLimit , gasPrice:gasPrice},
+                        final_callback);
+                });
+            }
+        };
+
+
         //send transfer to web3
-        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, function(error, result){
+        var next_callback = null;
+        var amountETHToSend = null;
+        if(isSendingETH){
+            next_callback = final_callback;
+            amountETHToSend = amount;
+        } else {
+            next_callback = erc20_callback;
+            amountETHToSend = min_send_amt_wei;
+        }
+        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, function(error, result){
             var _gas = result;
             if (_gas > maxGas){
                 _gas = maxGas;
@@ -85,12 +135,13 @@ window.onload = function () {
             contract().newTransfer.sendTransaction(
                 _disableDeveloperTip,
                 _owner,
+                token,
                 {from :fromAccount,
                     gas: _gas,
-                    value: amount,
+                    value: amountETHToSend,
                     gasLimit: _gasLimit,
                     gasPrice: gasPrice},
-            callback);
+            next_callback);
         });
     };
 

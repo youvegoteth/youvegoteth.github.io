@@ -19,7 +19,14 @@ window.onload = function () {
     //default form values
     $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
-    $("amount_txt").innerHTML = getParam('amount');
+    var token = getParam('token');
+    if(!token){
+        token = 'ETH';
+    }
+    var _text = "You've Got "+getParam('amount')+" "+token+"!";
+    $("zeroh1").innerHTML = _text;
+    $("oneh1").innerHTML = _text;
+    $("tokenName").innerHTML = token;
 
     // When 'Generate Account' is clicked
     $("receive").onclick = function() {
