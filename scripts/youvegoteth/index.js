@@ -19,7 +19,13 @@ var setNetworkSelect = function(newNum){
         document.getElementById("network").selectedIndex = newNum;        
     },100);
 }
+var setContractSelect = function(newNum){
+    setTimeout(function(){
+        document.getElementById("contract").selectedIndex = newNum;        
+    },100);
+}
 
+//figure out what network to point at
 network_id=0; //mainnet
 var etherscanDomain = 'etherscan.io';
 if(getParam('network') != null){
@@ -30,6 +36,20 @@ if(getParam('network') != null){
     network_id = parseInt(localStorage.getItem('network_id'));
 }
 
+//default to latest contract, unless user has a link to receive.html where addres/key are specificed but contract verseion is not.
+contract_revision=1;
+if(getParam('address') && getParam('key') && !getParam('contract')){
+    contract_revision=0;
+}
+if(getParam('contract') != null){
+    var newcontract = parseInt(getParam('contract'));
+    localStorage.setItem('contract', newcontract);
+    contract_revision = newcontract;
+} else if(localStorage.getItem('contract') != null){
+    contract_revision = parseInt(localStorage.getItem('contract'));
+}
+setContractSelect(contract_revision);
+
 if(network_id==9){
     //testrpc
     var contract_address = '0x2094fda6b63e007794eebd5e0cb6b93813d35b9d'; 
@@ -38,13 +58,22 @@ if(network_id==9){
 }
 else if(network_id==3){
     //ropsten
-    var contract_address = '0x541ae91cc160b92d136e15ec86549c99628a5a96'; //ropsten OG
-    var contract_address = '0xE95215CdbEfDbeB58559D231E07278880FcaeC15'; //ropsten latest
+    var contract_address = '0x0';
+    if (contract_revision==0){
+        contract_address = '0xE95215CdbEfDbeB58559D231E07278880FcaeC15'; //ropsten v0
+    } else {
+        contract_address = '0xf2520544b93a14c78e8ffec79567de9d654abfb1'; //ropsten v1
+    }
     etherscanDomain = 'ropsten.etherscan.io';
     setNetworkSelect(1);    
 } else {
     //mainnet
-    var contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; 
+    var contract_address = '0x0';
+    if (contract_revision==0){
+        contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; //mainnet v0
+    } else {
+        contract_address = '0xde4245af39314f1001f76352de7fc7d434e8ab94'; //mainnet v1
+    }
     setNetworkSelect(0);
 }
 var contract = function(){
@@ -59,3 +88,9 @@ var onNetworkChange = function(){
     localStorage.setItem('network_id', newNetwork);
     document.location.href = '/';
 }
+var onContractChange = function(){
+    var newcontract = parseInt($("contract").value);
+    localStorage.setItem('contract', newcontract);
+    document.location.href = '/';
+}
+

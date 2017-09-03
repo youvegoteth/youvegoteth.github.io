@@ -8,5 +8,5 @@ window.onload = function () {
     };
     $("neweth").onclick = _click;
     $("newerc20").onclick = _click;
-
+    
 };

@@ -83,7 +83,7 @@ window.onload = function () {
                 $("tokenName").innerHTML = tokenName;
                 $("send_eth_done").style.display = 'block';
                 $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
-                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName;
+                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision ;
                 var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
                 $('link').value = link;
                 var warning = "";

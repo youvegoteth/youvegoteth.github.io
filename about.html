@@ -15,6 +15,10 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
+        <script src="scripts/youvegoteth/pre.js"></script>
+        <script src="scripts/youvegoteth/web3alert.js"></script>
+        <script src="scripts/youvegoteth/index.js"></script>
+
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="youvegoteth.github.io" />
         <meta name="twitter:title" content="Send Ethereum to anyone with an email address" />
@@ -103,6 +107,12 @@
                                     <option value="0">Mainnet</option>
                                     <option value="3">Ropsten</option>
                                     <option value="9">TestRPC</option>
+                                </select>
+                            </li>
+                            <li style="border-left: none;">
+                                <select id="contract" style="background:transparent" onchange="onContractChange();" >
+                                    <option value="0">Contract v0.01</option>
+                                    <option value="1">Contract v0.1</option>
                                 </select>
                             </li>
 						</ul>
