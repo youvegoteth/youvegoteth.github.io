@@ -72,7 +72,7 @@ else if(network_id==3){
     if (contract_revision==0){
         contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; //mainnet v0
     } else {
-        contract_address = 'TODO'; //mainnet v1
+        contract_address = '0x8bcaadc84fd3bdea3cc5dd534cd85692a820a692'; //mainnet v1
     }
     setNetworkSelect(0);
 }
