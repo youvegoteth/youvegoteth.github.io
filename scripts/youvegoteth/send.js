@@ -152,7 +152,8 @@ window.onload = function () {
                     console.log(error);
                     alert('got an error :(');
                 } else {
-                    token_contract(token).approve.estimateGas(contract_address, amount, function(error, result){
+                    var approve_amount = amount * numBatches;
+                    token_contract(token).approve.estimateGas(contract_address, approve_amount, function(error, result){
                         var _gas = result;
                         if (_gas > maxGas){
                             _gas = maxGas;
@@ -160,7 +161,7 @@ window.onload = function () {
                         var _gasLimit = _gas * 1.01;
                         token_contract(token).approve.sendTransaction(
                             contract_address, 
-                            amount, 
+                            approve_amount, 
                             {from :fromAccount, gas:gas, gasLimit: gasLimit},
                             final_callback);
                     });
@@ -175,8 +176,12 @@ window.onload = function () {
                 next_callback = final_callback;
                 amountETHToSend = amount + fees;
             } else {
-                next_callback = erc20_callback;
                 amountETHToSend = min_send_amt_wei + fees;
+                if(i==0){ //only need to call approve once for amount * numbatches
+                    next_callback = erc20_callback;
+                } else {
+                    next_callback = final_callback;
+                }
             }
             contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, expires, function(error, result){
                 var _gas = result;
