@@ -7,6 +7,11 @@ function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+function advancedToggle(){
+    $('advanced_toggle').style.display = 'none';
+    $('advanced').style.display = 'block';
+}
+
 window.onload = function () {
     var min_send_amt_wei = 6000000;
 // address is owner, hash is private key
@@ -28,29 +33,33 @@ window.onload = function () {
 
         //get form data
         var email = $("email").value;
-        var amount = $("amount").value * weiPerEther;
-        var amountInEth = amount * 1.0 / weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
         var accept_tos = $("tos").checked;
         var token = $("token").value;
         var fees = parseInt($("fees").value);
+        var expires = parseInt($("expires").value);
         var isSendingETH = (token == '0x0' || token == '0x0000000000000000000000000000000000000000');
         var tokenDetails = tokenAddressToDetails(token);
         var tokenName = 'ETH';
+        var weiConvert = weiPerEther;
         if(!isSendingETH){
             tokenName = tokenDetails.name;
+            weiConvert = 10**tokenDetails.decimals;
         }
+        var amount = $("amount").value * weiConvert;
+        var amountInEth = amount * 1.0 / weiConvert;
 
         //validation
-        if(!validateEmail(email)){
-            _alert('You must enter an email!');
+        var hasEmail = email != '';
+        if(hasEmail && !validateEmail(email)){
+            _alert('Email is optional, but if you enter an email, you must enter a valid email!');
             return;
         }
         if(!isNumeric(amount) || amount == 0){
             _alert('You must enter an number for the amount!');
             return;
         }
-        var min_amount = min_send_amt_wei*1.0/weiPerEther;
+        var min_amount = min_send_amt_wei*1.0/weiConvert;
         var max_amount = 5;
         if(!isSendingETH){
             max_amount = 1000;
@@ -92,7 +101,11 @@ window.onload = function () {
                 } else if(network_id == 9){
                     warning = "(TestRPC)";
                 }
-                $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
+                if(hasEmail){
+                    $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
+                } else {
+                    $("email_container").style.display = "none";
+                }
                 var qrcode = new QRCode("qrcode");
                 qrcode.makeCode(link);
             }
@@ -130,7 +143,7 @@ window.onload = function () {
             next_callback = erc20_callback;
             amountETHToSend = min_send_amt_wei + fees;
         }
-        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, function(error, result){
+        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, expires, function(error, result){
             var _gas = result;
             if (_gas > maxGas){
                 _gas = maxGas;
@@ -142,6 +155,7 @@ window.onload = function () {
                 token,
                 amount,
                 fees,
+                expires,
                 {from :fromAccount,
                     gas: _gas,
                     value: amountETHToSend,

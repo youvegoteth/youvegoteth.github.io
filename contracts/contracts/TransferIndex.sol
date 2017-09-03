@@ -76,7 +76,7 @@ contract TransferIndex {
   }
 
   // create new transfer
-  function newTransfer(bool _disableDeveloperTip, address _owner, address _contract, uint _amount, uint _fee_amount) public payable {
+  function newTransfer(bool _disableDeveloperTip, address _owner, address _contract, uint _amount, uint _fee_amount, uint expires) public payable {
     
     //validation
     bool isSendingEth = _contract == 0x0;
@@ -92,7 +92,7 @@ contract TransferIndex {
     if(!isSendingEth){
       t.amount = _amount;
     }
-    t.expiration_time = now + (60* 60 * 24 * 7); // 7 days
+    t.expiration_time = now + expires;
     t.from = msg.sender;
     t.erc20contract = _contract;
     t.initialized = true;
