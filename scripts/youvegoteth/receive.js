@@ -29,16 +29,16 @@ window.onload = function () {
         var forwarding_address = $("forwarding_address").value.trim();
 
         if(!forwarding_address || forwarding_address == '0x0'){
-            alert("Not a valid forwarding address.");
+            _alert("Not a valid forwarding address.");
             return;
         }
 
         if(!_idx || _idx == '0x0'){
-            alert("Invalid Link.  Please check your link and try again");
+            _alert("Invalid Link.  Please check your link and try again");
             return;
         }
         if(!private_key){
-            alert("Invalid Link.  Please check your link and try again");
+            _alert("Invalid Link.  Please check your link and try again");
             return;
         }
 
@@ -46,7 +46,7 @@ window.onload = function () {
         var callback = function(error, result){
             if(error){
                 console.log(error);
-                alert('got an error :(');
+                _alert('got an error :(');
             } else {
                 startConfetti();
                 $("send_eth").innerHTML = "<h1>Success 🚀!</h1> <a href='https://"+etherscanDomain+"/tx/"+result+"'>See your transaction on the blockchain here</a>.<br><br>(it might take a few minutes to show up, depending upon network congestion)" ;

@@ -26,26 +26,26 @@ window.onload = function () {
         console.log(accept_tos);
         //validation
         if(!validateEmail(email)){
-            alert('You must enter an email!');
+            _alert('You must enter an email!');
             return;
         }
         if(!isNumeric(amount) || amount == 0){
-            alert('You must an number for the amount!');
+            _alert('You must an number for the amount!');
             return;
         }
         var min_amount = 6000000*1.0/weiPerEther;
         var max_amount = 5;
         if(amountInEth > max_amount){
-            alert('You can only send a maximum of' + max_amount + ' ETH.');
+            _alert('You can only send a maximum of' + max_amount + ' ETH.');
             return;
         }
         if(amountInEth < min_amount){
-            alert('You can minimum of' + min_amount + ' ETH.');
+            _alert('You can minimum of' + min_amount + ' ETH.');
             return;
         }
 
         if(!accept_tos){
-            alert('You must accept the terms.');
+            _alert('You must accept the terms.');
             return;
         }
 
@@ -57,7 +57,7 @@ window.onload = function () {
         var callback = function(error, result){
             if(error){
                 console.log(error);
-                alert('got an error :(');
+                _alert('got an error :(');
             } else {
                 $("send_eth").style.display = 'none';
                 $("send_eth_done").style.display = 'block';

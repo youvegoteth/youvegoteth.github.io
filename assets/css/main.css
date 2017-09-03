@@ -884,3 +884,18 @@
 		.dev {
 			margin:auto;
 		}
+
+
+		p.alert_msg {
+			top:0px;
+			width: 100%;
+			z-index: 99999;
+			background-color: #ff7496;
+			color: white;
+			position: fixed;
+			text-align: center;
+		}
+		p.alert_msg a{
+			font-weight: bold;
+
+		}
