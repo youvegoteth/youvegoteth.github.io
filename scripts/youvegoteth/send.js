@@ -111,7 +111,7 @@ window.onload = function () {
                     $("send_eth_done").style.display = 'block';
                     $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
                     var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision ;
-                    var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
+                    var link = document.location.href.split('?')[0].replace('send.html','').replace('#','') + relative_link;
                     $('link').value = link;
 
                     $('link').style.display='none';
@@ -135,7 +135,10 @@ window.onload = function () {
                     var div = document.createElement("div");
                     div.id = qrcode_id;
                     div.className = 'qrcodes';
+                    var p = document.createElement("p");
+                    p.innerHTML = amountInEth + " " + tokenName;
 
+                    $("qrcode_container").appendChild(p);
                     $("qrcode_container").appendChild(div);
                     var qrcode = new QRCode(qrcode_id);
                     qrcode.makeCode(link);

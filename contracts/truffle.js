@@ -41,7 +41,10 @@ module.exports = {
       network_id: 1,    // Official mainnet network id
       provider: mainnet_engine, // Use our custom provider
       from: address,     // Use the address we derived
-      gasPrice: '0x13AB6680' , ///
+      //gasPrice: '0x13AB6680' , /// 33
+      gasPrice: '0x2756CD00' , /// 66
+
+
     },
     development: {
       host: "localhost",
