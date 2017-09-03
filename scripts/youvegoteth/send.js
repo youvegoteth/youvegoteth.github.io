@@ -22,6 +22,7 @@ window.onload = function () {
 
     // When 'Generate Account' is clicked
     $("send").onclick = function() {
+        metaMaskWarning();
         //setup
         var fromAccount = web3.eth.accounts[0];
 
@@ -41,11 +42,11 @@ window.onload = function () {
 
         //validation
         if(!validateEmail(email)){
-            alert('You must enter an email!');
+            _alert('You must enter an email!');
             return;
         }
         if(!isNumeric(amount) || amount == 0){
-            alert('You must an number for the amount!');
+            _alert('You must enter an number for the amount!');
             return;
         }
         var min_amount = min_send_amt_wei*1.0/weiPerEther;
@@ -54,16 +55,16 @@ window.onload = function () {
             max_amount = 1000;
         }
         if(amountInEth > max_amount){
-            alert('You can only send a maximum of ' + max_amount + ' '+tokenName+'.');
+            _alert('You can only send a maximum of ' + max_amount + ' '+tokenName+'.');
             return;
         }
         if(amountInEth < min_amount){
-            alert('You can minimum of' + min_amount + ' '+tokenName+'.');
+            _alert('You can minimum of' + min_amount + ' '+tokenName+'.');
             return;
         }
 
         if(!accept_tos){
-            alert('You must accept the terms.');
+            _alert('You must accept the terms.');
             return;
         }
 
@@ -75,7 +76,7 @@ window.onload = function () {
         var final_callback = function(error, result){
             if(error){
                 console.log(error);
-                alert('got an error :(');
+                _alert('got an error :(');
             } else {
                 $("send_eth").style.display = 'none';
                 $("tokenName").innerHTML = tokenName;
@@ -91,6 +92,8 @@ window.onload = function () {
                     warning = "(TestRPC)";
                 }
                 $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
+                var qrcode = new QRCode("qrcode");
+                qrcode.makeCode(link);
             }
         };
 

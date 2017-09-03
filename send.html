@@ -26,6 +26,7 @@
         <script src="scripts/youvegoteth/tokens.js"></script>
         <script src="scripts/youvegoteth/send.js"></script>
         <script src="scripts/youvegoteth/web3alert.js"></script>
+        <script src="scripts/qrcode.min.js"></script>
 
 
         <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
@@ -96,12 +97,18 @@
                             <h2>Your <span id="tokenName">ETH</span> is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
                             <hr>
                             <h1>You can now Send it</h1>
-                            <p>Copy a link</p>
+                            <p>Copy link</p>
                             <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important;" />
                             <br>
                             <p>- or - </p>
                             <a id="continue" class="button" href="#"> Send Email ✉️ </a>
                             <br>
+                            <br>
+                            <p>- or - </p>
+                            <p>Copy QR Code</p>
+                            <div style="text-align: center; width=100%; padding-left: 240px">
+                            <div id="qrcode"></div>
+                            </div>
                             <br>
                             <p>- or - </p>
                             <a id="" class="button" href="/">⬅ Start Over</a>
