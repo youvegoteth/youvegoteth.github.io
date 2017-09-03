@@ -64,8 +64,6 @@
                             </span>
 						</header>
 
-                        <input type='hidden' name='idx_address' id='idx_address' value=''>
-                        <input type='hidden' name='hash' id='hash' value='hash'>
                         <div id="send_eth">
                         <h1>Send Now.</h1>
                             <div>
@@ -124,7 +122,9 @@
                             <hr>
                             <h1>You can now Send it</h1>
                             <p>Copy link</p>
-                            <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important;" />
+                            <div id="link_container">
+                                <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important; margin-top:10px;" />
+                            </div>
                             <br>
                             <span id="email_container">
                                 <p>- or - </p>
@@ -135,7 +135,9 @@
                             <p>- or - </p>
                             <p>Copy QR Code</p>
                             <div style="text-align: center; width=100%;">
-                            <div id="qrcode"></div>
+                            <div id="qrcode_container">
+
+                            </div>
                             </div>
                             <br>
                             <p>- or - </p>

@@ -62,7 +62,7 @@ else if(network_id==3){
     if (contract_revision==0){
         contract_address = '0xE95215CdbEfDbeB58559D231E07278880FcaeC15'; //ropsten v0
     } else {
-        contract_address = '0xf2520544b93a14c78e8ffec79567de9d654abfb1'; //ropsten v1
+        contract_address = '0xb917e0f1fdebb89d37cbe053f59066a20b6794d6'; //ropsten v1
     }
     etherscanDomain = 'ropsten.etherscan.io';
     setNetworkSelect(1);    
@@ -72,7 +72,7 @@ else if(network_id==3){
     if (contract_revision==0){
         contract_address = '0x7aca51dbe152313987adca472ac1d033b640f771'; //mainnet v0
     } else {
-        contract_address = '0xde4245af39314f1001f76352de7fc7d434e8ab94'; //mainnet v1
+        contract_address = 'TODO'; //mainnet v1
     }
     setNetworkSelect(0);
 }

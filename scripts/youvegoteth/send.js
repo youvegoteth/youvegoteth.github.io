@@ -12,11 +12,23 @@ function advancedToggle(){
     $('advanced').style.display = 'block';
 }
 
+var unPackAddresses = function(){
+    var addresses = JSON.parse(localStorage.getItem("addresses"));
+    document.addresses = addresses;
+    if(!addresses || addresses.length == 0){
+        _alert("Invalid addresss generated.  Please try again from the landing page.");
+        setTimeout(function(){
+            document.location.href = '/';
+        },3000);
+    };
+    localStorage.setItem("addresses", null);
+}
+
 window.onload = function () {
+
+    unPackAddresses();
+
     var min_send_amt_wei = 6000000;
-// address is owner, hash is private key
-    $("idx_address").value = getParam('address');
-    $("hash").value = getParam('hash');
 
     tokens.forEach(function(ele){
         var option = document.createElement("option");
@@ -27,7 +39,9 @@ window.onload = function () {
 
     // When 'Generate Account' is clicked
     $("send").onclick = function() {
-        metaMaskWarning();
+        if(metaMaskWarning()){
+            return;
+        }
         //setup
         var fromAccount = web3.eth.accounts[0];
 
@@ -78,90 +92,113 @@ window.onload = function () {
             return;
         }
 
-        //generate ephemeral account
-        var _owner = $("idx_address").value;
-        var _private_key = $("hash").value;
+        var numBatches = document.addresses.length;
+        var plural = numBatches > 1 ? 's' : '';
+        var processTx = function(i){
+            //generate ephemeral account
+            var _owner = document.addresses[i]['address'];
+            var _private_key = document.addresses[i]['pk'];
 
-        //set up callback for web3 call to final transfer
-        var final_callback = function(error, result){
-            if(error){
-                console.log(error);
-                _alert('got an error :(');
-            } else {
-                $("send_eth").style.display = 'none';
-                $("tokenName").innerHTML = tokenName;
-                $("send_eth_done").style.display = 'block';
-                $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
-                var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision ;
-                var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
-                $('link').value = link;
-                var warning = "";
-                if(network_id == 3){
-                    warning = "(Ropsten)";
-                } else if(network_id == 9){
-                    warning = "(TestRPC)";
-                }
-                if(hasEmail){
-                    $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
+            //set up callback for web3 call to final transfer
+            var final_callback = function(error, result){
+                if(error){
+                    console.log(error);
+                    _alert('got an error :(');
                 } else {
-                    $("email_container").style.display = "none";
-                }
-                var qrcode = new QRCode("qrcode");
-                qrcode.makeCode(link);
-            }
-        };
+                    var txid = result;
+                    $("send_eth").style.display = 'none';
+                    $("tokenName").innerHTML = tokenName;
+                    $("send_eth_done").style.display = 'block';
+                    $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
+                    var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision ;
+                    var link = document.location.href.split('?')[0].replace('send.html','') + relative_link;
+                    $('link').value = link;
 
-        //set up callback for web3 call to erc20 callback
-        var erc20_callback = function(error, result){
-            if(error){
-                console.log(error);
-                alert('got an error :(');
-            } else {
-                token_contract(token).approve.estimateGas(contract_address, amount, function(error, result){
-                    var _gas = result;
-                    if (_gas > maxGas){
-                        _gas = maxGas;
+                    $('link').style.display='none';
+                    var new_link = $('link').cloneNode(true);
+                    new_link.id = 'link_'+txid;
+                    new_link.style.display='block';
+                    $("link_container").appendChild(new_link);
+
+                    var warning = "";
+                    if(network_id == 3){
+                        warning = "(Ropsten)";
+                    } else if(network_id == 9){
+                        warning = "(TestRPC)";
                     }
-                    var _gasLimit = _gas * 1.01;
-                    token_contract(token).approve.sendTransaction(
-                        contract_address, 
-                        amount, 
-                        {from :fromAccount, gas:gas, gasLimit: gasLimit},
-                        final_callback);
-                });
+                    if(hasEmail){
+                        $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
+                    } else {
+                        $("email_container").style.display = "none";
+                    }
+                    var qrcode_id = 'qrcode_' + txid;
+                    var div = document.createElement("div");
+                    div.id = qrcode_id;
+                    div.className = 'qrcodes';
+
+                    $("qrcode_container").appendChild(div);
+                    var qrcode = new QRCode(qrcode_id);
+                    qrcode.makeCode(link);
+
+                    if((i + 1) < numBatches){
+                        processTx(i+1);
+                    }
+                }
+            };
+
+            //set up callback for web3 call to erc20 callback
+            var erc20_callback = function(error, result){
+                if(error){
+                    console.log(error);
+                    alert('got an error :(');
+                } else {
+                    token_contract(token).approve.estimateGas(contract_address, amount, function(error, result){
+                        var _gas = result;
+                        if (_gas > maxGas){
+                            _gas = maxGas;
+                        }
+                        var _gasLimit = _gas * 1.01;
+                        token_contract(token).approve.sendTransaction(
+                            contract_address, 
+                            amount, 
+                            {from :fromAccount, gas:gas, gasLimit: gasLimit},
+                            final_callback);
+                    });
+                }
+            };
+
+
+            //send transfer to web3
+            var next_callback = null;
+            var amountETHToSend = null;
+            if(isSendingETH){
+                next_callback = final_callback;
+                amountETHToSend = amount + fees;
+            } else {
+                next_callback = erc20_callback;
+                amountETHToSend = min_send_amt_wei + fees;
             }
+            contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, expires, function(error, result){
+                var _gas = result;
+                if (_gas > maxGas){
+                    _gas = maxGas;
+                }
+                var _gasLimit = _gas * 1.01;
+                contract().newTransfer.sendTransaction(
+                    _disableDeveloperTip,
+                    _owner,
+                    token,
+                    amount,
+                    fees,
+                    expires,
+                    {from :fromAccount,
+                        gas: _gas,
+                        value: amountETHToSend,
+                        gasLimit: _gasLimit},
+                next_callback);
+            });
         };
-
-
-        //send transfer to web3
-        var next_callback = null;
-        var amountETHToSend = null;
-        if(isSendingETH){
-            next_callback = final_callback;
-            amountETHToSend = amount + fees;
-        } else {
-            next_callback = erc20_callback;
-            amountETHToSend = min_send_amt_wei + fees;
-        }
-        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, expires, function(error, result){
-            var _gas = result;
-            if (_gas > maxGas){
-                _gas = maxGas;
-            }
-            var _gasLimit = _gas * 1.01;
-            contract().newTransfer.sendTransaction(
-                _disableDeveloperTip,
-                _owner,
-                token,
-                amount,
-                fees,
-                expires,
-                {from :fromAccount,
-                    gas: _gas,
-                    value: amountETHToSend,
-                    gasLimit: _gasLimit},
-            next_callback);
-        });
+        processTx(0);
     };
 
 };
