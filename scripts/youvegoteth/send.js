@@ -23,14 +23,14 @@ window.onload = function () {
         var amountInEth = amount * 1.0 / weiPerEther;
         var _disableDeveloperTip = !$("tip").checked;
         var accept_tos = $("tos").checked;
-        console.log(accept_tos);
+
         //validation
         if(!validateEmail(email)){
             _alert('You must enter an email!');
             return;
         }
         if(!isNumeric(amount) || amount == 0){
-            _alert('You must an number for the amount!');
+            _alert('You must enter an number for the amount!');
             return;
         }
         var min_amount = 6000000*1.0/weiPerEther;
@@ -72,6 +72,8 @@ window.onload = function () {
                     warning = "(TestRPC)";
                 }
                 $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" ETH!&body=I've just sent you Ethereum.  Click here to claim it: " + encodeURIComponent(link);
+                var qrcode = new QRCode("qrcode");
+                qrcode.makeCode(link);
             }
         };
 
