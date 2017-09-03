@@ -899,3 +899,9 @@
 			font-weight: bold;
 
 		}
+
+		#qrcode {
+			width: 250px;
+			margin: 0px auto;
+			display: block;
+		}

@@ -163,7 +163,6 @@ if(network_id == 0 ){
 ];  
 } else if(network_id == 3 ){ //ropsten
   var tokens = [
-    { "addr": "0x9ee228365ebc1da6a5d025fdf0939edf2bea21da", "name": "DERP", "decimals": 18 },
     ];
 } else if(network_id == 9 ){ //testrpc
   var tokens = [

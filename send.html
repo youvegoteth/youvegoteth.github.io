@@ -74,10 +74,20 @@
                             </div>
                             <div>
                                 <br>
-                                Amount of  <select id="token" style="width:70px; margin-bottom: 10px; display: inline;" >
+                                Amount of  
+                                <select id="token" style="width:70px; margin-bottom: 10px; display: inline;" >
                                     <option value="0x0">ETH</option>
                                 </select>
                                 <input type="text" placeholder="1.1" id="amount" value="" style="width: 170px; display: inline;">
+                            </div>
+                            <div>
+                                Fees:
+                                <select id="fees" style="width:350px; margin: 0px auto;" >
+                                    <option value="250000">Low (250k wei) / Slow Confirmation</option>
+                                    <option value="350000">Medum (350k wei) / Medium Confirmation</option>
+                                    <option value="450000">High (450k wei) / Fast Confirmation</option>
+                                    <option value="550000">Very High (550k wei) / Faster Confirmation</option>
+                                </select>
                             </div>
                             <div>
                                 <br>
@@ -106,7 +116,7 @@
                             <br>
                             <p>- or - </p>
                             <p>Copy QR Code</p>
-                            <div style="text-align: center; width=100%; padding-left: 240px">
+                            <div style="text-align: center; width=100%;">
                             <div id="qrcode"></div>
                             </div>
                             <br>

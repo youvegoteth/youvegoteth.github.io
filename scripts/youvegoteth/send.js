@@ -33,6 +33,7 @@ window.onload = function () {
         var _disableDeveloperTip = !$("tip").checked;
         var accept_tos = $("tos").checked;
         var token = $("token").value;
+        var fees = parseInt($("fees").value);
         var isSendingETH = (token == '0x0' || token == '0x0000000000000000000000000000000000000000');
         var tokenDetails = tokenAddressToDetails(token);
         var tokenName = 'ETH';
@@ -112,7 +113,7 @@ window.onload = function () {
                     token_contract(token).approve.sendTransaction(
                         contract_address, 
                         amount, 
-                        {from :fromAccount, gas:gas, gasLimit: gasLimit , gasPrice:gasPrice},
+                        {from :fromAccount, gas:gas, gasLimit: gasLimit},
                         final_callback);
                 });
             }
@@ -124,12 +125,12 @@ window.onload = function () {
         var amountETHToSend = null;
         if(isSendingETH){
             next_callback = final_callback;
-            amountETHToSend = amount;
+            amountETHToSend = amount + fees;
         } else {
             next_callback = erc20_callback;
-            amountETHToSend = min_send_amt_wei;
+            amountETHToSend = min_send_amt_wei + fees;
         }
-        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, function(error, result){
+        contract().newTransfer.estimateGas(_disableDeveloperTip, _owner, token, amount, fees, function(error, result){
             var _gas = result;
             if (_gas > maxGas){
                 _gas = maxGas;
@@ -139,11 +140,12 @@ window.onload = function () {
                 _disableDeveloperTip,
                 _owner,
                 token,
+                amount,
+                fees,
                 {from :fromAccount,
                     gas: _gas,
                     value: amountETHToSend,
-                    gasLimit: _gasLimit,
-                    gasPrice: gasPrice},
+                    gasLimit: _gasLimit},
             next_callback);
         });
     };

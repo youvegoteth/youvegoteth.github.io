@@ -11,7 +11,6 @@ contract TransferIndex {
   uint256 default_developer_tip_pct = 1;
   uint256 minimum_wei_amount = 6000000; // should be at least 2x gas amount
   uint256 maximum_wei_amount = 1000000000000000000 * 100; // 100 eth
-  uint256 send_gas_amount = 3000000;
 
   // ------------------------------
   // indexed object
@@ -25,6 +24,7 @@ contract TransferIndex {
     address from;
     address owner;
     address erc20contract;
+    uint fee_amount;
   }
 
   // ------------------------------
@@ -76,7 +76,7 @@ contract TransferIndex {
   }
 
   // create new transfer
-  function newTransfer(bool _disableDeveloperTip, address _owner, address _contract) public payable {
+  function newTransfer(bool _disableDeveloperTip, address _owner, address _contract, uint _amount, uint _fee_amount) public payable {
     
     //validation
     bool isSendingEth = _contract == 0x0;
@@ -87,7 +87,11 @@ contract TransferIndex {
     //adds an index to the transfer index.
     transfer memory t;
     //set data that we have now
-    t.amount = msg.value - send_gas_amount;
+    t.amount = msg.value - _fee_amount;
+    //if erc20
+    if(!isSendingEth){
+      t.amount = _amount;
+    }
     t.expiration_time = now + (60* 60 * 24 * 7); // 7 days
     t.from = msg.sender;
     t.erc20contract = _contract;
@@ -98,10 +102,11 @@ contract TransferIndex {
     }
     t.owner = _owner;
     t.active = true;
+    t.fee_amount = _fee_amount;
     transfers[_owner] = t;
 
     //send eth to the ephemeral address
-    _owner.transfer(send_gas_amount);
+    _owner.transfer(_fee_amount);
 
     transferSubmitted(transfers[_owner].from, transfers[_owner].amount, transfers[_owner].erc20contract, _owner);
 

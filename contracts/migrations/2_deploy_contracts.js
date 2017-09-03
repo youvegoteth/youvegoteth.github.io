@@ -1,7 +1,7 @@
 var TransferIndex = artifacts.require("./TransferIndex.sol");
-var StandardContract = artifacts.require("./zeppelin/StandardToken.sol");
+var StrawManToken = artifacts.require("./StrawManToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(StandardContract);
+  deployer.deploy(StrawManToken);
   deployer.deploy(TransferIndex);
 };

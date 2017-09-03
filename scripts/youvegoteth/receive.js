@@ -81,7 +81,7 @@ window.onload = function () {
                 var gasLimit = gas;
                 var rawTx = {
                     nonce: web3.toHex(nonce),
-                    gasPrice: web3.toHex(1),
+                    gasPrice: web3.toHex(2),
                     gasLimit: web3.toHex(gasLimit),
                     gas: web3.toHex(gas),
                     to: contract_address,
