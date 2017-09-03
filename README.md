@@ -30,9 +30,9 @@ Eth that is in escrow in the system is stored in [the smart contract](https://gi
 
 This contract is deployed on the mainnet at ropsten at :
 
-* Mainnet: [0x7aca51dbe152313987adca472ac1d033b640f771](https://etherscan.io/address/0x7aca51dbe152313987adca472ac1d033b640f771
+* Mainnet: [0x8bcaadc84fd3bdea3cc5dd534cd85692a820a692](https://etherscan.io/address/0x8bcaadc84fd3bdea3cc5dd534cd85692a820a692)
 )
-* Ropsten: [0xE95215CdbEfDbeB58559D231E07278880FcaeC15](https://ropsten.etherscan.io/address/0xE95215CdbEfDbeB58559D231E07278880FcaeC15)
+* Ropsten: [0xb917e0f1fdebb89d37cbe053f59066a20b6794d6](https://ropsten.etherscan.io/address/0xb917e0f1fdebb89d37cbe053f59066a20b6794d6)
 
 When ETH is placed into the smart contract, it is stored in such a way that it can only be accessed by the private key of an ephemeral address, generated on the fly during the checkout process.  
 

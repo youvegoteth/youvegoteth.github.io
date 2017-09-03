@@ -1,5 +1,5 @@
 
-var _alert = function(msg){
+var _alert = function(msg, addClassName){
     var existing_alerts = document.getElementsByClassName('alert_msg');
     for(var i=0;i<existing_alerts.length; i++){
         var top = parseInt(existing_alerts[i].style.top.replace('px',''));
@@ -10,7 +10,7 @@ var _alert = function(msg){
     }
 
     var para = document.createElement("p");
-    para.className="alert_msg";
+    para.className="alert_msg " + addClassName;
     var element = document.body;
     element.appendChild(para);
     para.innerHTML = msg;
@@ -22,7 +22,12 @@ var _alert = function(msg){
 var metaMaskWarning = function(){
     if(typeof web3 == 'undefined' || !web3.currentProvider.isMetaMask){   
         _alert("You must install <a href=https://metamask.io/>Metamask</a> to use this tool.");        
+        return true;
+    } else if (web3.eth.accounts.length == 0){
+        _alert("Please unlock Metamask.");        
+        return true;
     }
+    return false;
 }
 
 setTimeout(metaMaskWarning,1000);

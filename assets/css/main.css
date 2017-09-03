@@ -895,7 +895,17 @@
 			position: fixed;
 			text-align: center;
 		}
+		p.alert_msg.info {
+			background-color: #44dbf6;
+		}
 		p.alert_msg a{
 			font-weight: bold;
 
+		}
+
+		.qrcodes {
+			width: 250px;
+			margin: 0px auto;
+			display: block;
+			height: 300px;
 		}

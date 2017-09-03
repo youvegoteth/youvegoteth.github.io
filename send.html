@@ -23,6 +23,7 @@
 
         <script src="scripts/youvegoteth/index.js"></script>
         <script src="scripts/youvegoteth/pre.js"></script>
+        <script src="scripts/youvegoteth/tokens.js"></script>
         <script src="scripts/youvegoteth/send.js"></script>
         <script src="scripts/youvegoteth/web3alert.js"></script>
         <script src="scripts/qrcode.min.js"></script>
@@ -63,23 +64,49 @@
                             </span>
 						</header>
 
-                        <input type='hidden' name='idx_address' id='idx_address' value=''>
-                        <input type='hidden' name='hash' id='hash' value='hash'>
                         <div id="send_eth">
-                        <h1>Send Ethereum Now.</h1>
-                            <div>
-                                Email address:
-                                <input type="text" placeholder="foo@bar.it" id="email" value="">
-                            </div>
+                        <h1>Send Now.</h1>
                             <div>
                                 <br>
-                                Amount of ETH:
-                                <input type="text" placeholder="1.1" id="amount" value="">
+                                Amount of  
+                                <select id="token" style="width:70px; margin-bottom: 10px; display: inline;" >
+                                    <option value="0x0">ETH</option>
+                                </select>
+                                <input type="text" placeholder="1.1" id="amount" value="" style="width: 170px; display: inline;">
+                            </div>
+                            <div id="advanced_toggle">
+                                <a href="#" onClick="advancedToggle()" >Advanced >></a>
+                            </div>
+                            <div id='advanced' style="display:none;">
+                                <div>
+                                    Email address (optional):
+                                    <input type="text" placeholder="foo@bar.it" id="email" value="" style="width: 350px; margin-left: auto; margin-right: auto;">
+                                </div>
+                                <div>
+                                    Fees:
+                                    <select id="fees" style="width:350px; margin: 0px auto;" >
+                                        <option value="60000">Low (60k wei) / Slow Confirmation</option>
+                                        <option value="100000">Medum (100k wei) / Medium Confirmation</option>
+                                        <option value="125000">High (125k wei) / Fast Confirmation</option>
+                                        <option value="150000">Very High (150k wei) / Faster Confirmation</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    Expires:
+                                    <select id="expires" style="width:350px; margin: 0px auto;" >
+                                        <option value="86400">One Day</option>
+                                        <option value="604800" selected="selected">One Week</option>
+                                        <option value="7257600">One Month</option>
+                                        <option value="87091200">One Year</option>
+                                        <option value="870912000">Ten Years</option>
+                                        <option value="9999999999999">Never</option>
+                                    </select>
+                                </div>
                             </div>
                             <div>
                                 <br>
                                 <input type="checkbox" id="tos" value="1" >
-                                <label for="tos">I understand I am using alpha software, <br> provided under <a href="https://github.com/youvegoteth/youvegoteth.github.io/blob/master/license.txt">MIT liscense</a>.</label>
+                                <label for="tos">I understand I am using alpha software, <br>at my own risk, provided under <a href="https://github.com/youvegoteth/youvegoteth.github.io/blob/master/license.txt">MIT liscense</a>.</label>
                                 <br>
                                 <input type="checkbox" id="tip" value="1"  checked="checked">
                                 <label for="tip">I want to support free software. Tip the devs 1%.</label>
@@ -91,20 +118,26 @@
 
                         <div id="send_eth_done" style="display:none;">
                             <h1>Woo hoo!</h1>
-                            <h2>Your Ether is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
+                            <h2>Your <span id="tokenName">ETH</span> is safe & secure <a id="trans_link" href="" target=new>in the smart contract</a>.</h2>
                             <hr>
                             <h1>You can now Send it</h1>
                             <p>Copy link</p>
-                            <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important;" />
+                            <div id="link_container">
+                                <input type="text" name="link" id="link" value="" onClick="this.select();" disabled="disabled" style="text-transform:none !important; margin-top:10px;" />
+                            </div>
                             <br>
-                            <p>- or - </p>
-                            <a id="continue" class="button" href="#"> Send Email ✉️ </a>
-                            <br>
-                            <br>
+                            <span id="email_container">
+                                <p>- or - </p>
+                                <a id="continue" class="button" href="#"> Send Email ✉️ </a>
+                                <br>
+                                <br>
+                            </span>
                             <p>- or - </p>
                             <p>Copy QR Code</p>
-                            <div style="text-align: center; width=100%; padding-left: 240px">
-                            <div id="qrcode"></div>
+                            <div style="text-align: center; width=100%;">
+                            <div id="qrcode_container">
+
+                            </div>
                             </div>
                             <br>
                             <p>- or - </p>
@@ -124,6 +157,12 @@
                                     <option value="0">Mainnet</option>
                                     <option value="3">Ropsten</option>
                                     <option value="9">TestRPC</option>
+                                </select>
+                            </li>
+                            <li style="border-left: none;">
+                                <select id="contract" style="background:transparent" onchange="onContractChange();" >
+                                    <option value="0">Contract v0.01</option>
+                                    <option value="1">Contract v0.1</option>
                                 </select>
                             </li>
 						</ul>
