@@ -19,10 +19,11 @@ window.onload = function () {
     //default form values
     $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
-    $("amount_txt").innerHTML = getParam('amount');
 
     // When 'Generate Account' is clicked
     $("receive").onclick = function() {
+        metaMaskWarning();
+
         //get form data
         var private_key = $("private_key").value;
         var _idx = $("idx_address").value;

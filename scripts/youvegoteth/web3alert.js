@@ -19,9 +19,15 @@ var _alert = function(msg){
     };
     setTimeout(callback,5000);
 };
-
-setTimeout(function(){
-    if(!web3.currentProvider.isMetaMask){
-        _alert("You must install <a href=https://metamask.io/>Metamask</a> to use this tool.");
+var metaMaskWarning = function(){
+    if(typeof web3 == 'undefined' || !web3.currentProvider.isMetaMask){   
+        _alert("You must install <a href=https://metamask.io/>Metamask</a> to use this tool.");        
     }
-},1000);
+}
+
+setTimeout(metaMaskWarning,1000);
+var metaMaskWarningRecurr = function(){
+    metaMaskWarning();
+    setTimeout(metaMaskWarningRecurr,5000);
+};
+setTimeout(metaMaskWarningRecurr,6000);

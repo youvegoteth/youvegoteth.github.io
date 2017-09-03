@@ -14,6 +14,7 @@ window.onload = function () {
 
     // When 'Generate Account' is clicked
     $("send").onclick = function() {
+        metaMaskWarning();
         //setup
         var fromAccount = web3.eth.accounts[0];
 
