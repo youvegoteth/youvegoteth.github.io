@@ -70,6 +70,10 @@ window.onload = function () {
             }
             web3.eth.getBalance(_idx, function(error,result){
                 var balance = result.toNumber();
+                if(balance==0){
+                    _alert("You must wait until the senders transaction confirms.");
+                    return;
+                }
                 web3.eth.getBlock("latest", function(error,result){
                     var gasLimit = result.gasLimit;
                     contract().claimTransfer.estimateGas(_idx, forwarding_address,function(error,result1){
