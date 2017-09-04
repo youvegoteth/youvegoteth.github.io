@@ -163,6 +163,7 @@ if(network_id == 0 ){
 ];  
 } else if(network_id == 3 ){ //ropsten
   var tokens = [
+    { "addr": "0x2941deaad71adb02b944bd38ebce2f1f4c9a62dc", "name": "COLO", "decimals": 18 },
     ];
 } else if(network_id == 9 ){ //testrpc
   var tokens = [

@@ -902,7 +902,10 @@
 			font-weight: bold;
 
 		}
-
+		.qrcode_header {
+			margin-top: 10px;
+			margin-bottom: 0px;
+		}
 		.qrcodes {
 			width: 250px;
 			margin: 0px auto;

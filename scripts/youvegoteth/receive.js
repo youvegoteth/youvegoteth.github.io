@@ -23,7 +23,7 @@ window.onload = function () {
     if(!token){
         token = 'ETH';
     }
-    var _text = "You've Got "+getParam('amount')+" "+token+"!";
+    var _text = "You've Got "+getParam('amount')+" "+getWarning()+" "+token+"!";
     $("zeroh1").innerHTML = _text;
     $("oneh1").innerHTML = _text;
     $("tokenName").innerHTML = token;

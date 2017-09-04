@@ -18,7 +18,9 @@ var unPackAddresses = function(){
     if(!addresses || addresses.length == 0){
         _alert("Invalid addresss generated.  Please try again from the landing page.");
         setTimeout(function(){
-            document.location.href = '/';
+            if(document.location.href.indexOf('send.html') != -1){
+                document.location.href = '/';
+            }
         },3000);
     };
     localStorage.setItem("addresses", null);
@@ -120,26 +122,26 @@ window.onload = function () {
                     new_link.style.display='block';
                     $("link_container").appendChild(new_link);
 
-                    var warning = "";
-                    if(network_id == 3){
-                        warning = "(Ropsten)";
-                    } else if(network_id == 9){
-                        warning = "(TestRPC)";
-                    }
+                    var warning = getWarning();
                     if(hasEmail){
                         $("continue").href="mailto:"+email+"?subject=You've Got "+warning+" "+tokenName+"!&body=I've just sent you "+tokenName+".  Click here to claim it: " + encodeURIComponent(link);
                     } else {
                         $("email_container").style.display = "none";
                     }
                     var qrcode_id = 'qrcode_' + txid;
+                    var span = document.createElement("span");
+                    span.className = 'qr_span';
                     var div = document.createElement("div");
                     div.id = qrcode_id;
                     div.className = 'qrcodes';
                     var p = document.createElement("p");
-                    p.innerHTML = amountInEth + " " + tokenName;
+                    p.className = 'qrcode_header';
+                    p.innerHTML = amountInEth + " " + tokenName + "<br>youvegoteth.github.io";
 
-                    $("qrcode_container").appendChild(p);
-                    $("qrcode_container").appendChild(div);
+
+                    $("qrcode_container").appendChild(span);
+                    span.appendChild(p);
+                    span.appendChild(div);
                     var qrcode = new QRCode(qrcode_id);
                     qrcode.makeCode(link);
 
