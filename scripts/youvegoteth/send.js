@@ -155,7 +155,7 @@ window.onload = function () {
             var erc20_callback = function(error, result){
                 if(error){
                     console.log(error);
-                    alert('got an error :(');
+                    _alert('got an error :(');
                 } else {
                     var approve_amount = amount * numBatches;
                     token_contract(token).approve.estimateGas(contract_address, approve_amount, function(error, result){
