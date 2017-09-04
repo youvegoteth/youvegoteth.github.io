@@ -136,7 +136,7 @@ window.onload = function () {
                     div.className = 'qrcodes';
                     var p = document.createElement("p");
                     p.className = 'qrcode_header';
-                    p.innerHTML = amountInEth + " " + tokenName + "<br>youvegoteth.github.io";
+                    p.innerHTML = amountInEth + " " + getWarning() + " " + tokenName + "<br>youvegoteth.github.io";
 
 
                     $("qrcode_container").appendChild(span);
