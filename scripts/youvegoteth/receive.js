@@ -11,13 +11,12 @@ window.onload = function () {
         },1000);
 
 
-        if(!getParam('address') || !getParam('key')){
+        if(!getParam('key')){
             $("send_eth").innerHTML = "<h1>Error 🤖</h1> Invalid Link.  Please check your link and try again" ;
             return;
         }
 
     //default form values
-    $("idx_address").value = getParam('address');
     $("private_key").value = getParam('key');
     var token = getParam('token');
     if(!token){
@@ -34,7 +33,7 @@ window.onload = function () {
 
         //get form data
         var private_key = $("private_key").value;
-        var _idx = $("idx_address").value;
+        var _idx = '0x' + lightwallet.keystore._computeAddressFromPrivKey(private_key);
         var forwarding_address = $("forwarding_address").value.trim();
 
         if(!forwarding_address || forwarding_address == '0x0'){

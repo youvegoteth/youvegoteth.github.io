@@ -98,7 +98,8 @@ window.onload = function () {
         var plural = numBatches > 1 ? 's' : '';
         var processTx = function(i){
             //generate ephemeral account
-            var _owner = document.addresses[i]['address'];
+            var _owner = '0x' + lightwallet.keystore._computeAddressFromPrivKey(document.addresses[i].pk);
+            console.log(_owner);
             var _private_key = document.addresses[i]['pk'];
 
             //set up callback for web3 call to final transfer
@@ -112,7 +113,7 @@ window.onload = function () {
                     $("tokenName").innerHTML = tokenName;
                     $("send_eth_done").style.display = 'block';
                     $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
-                    var relative_link = "receive.html?key=" + _private_key + "&address=" + _owner + "&amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision ;
+                    var relative_link = "receive.html?"+ "amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision + "&key=" + _private_key ;
                     var link = document.location.href.split('?')[0].replace('send.html','').replace('#','') + relative_link;
                     $('link').value = link;
 

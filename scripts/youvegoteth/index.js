@@ -26,12 +26,21 @@ function getParam(parameterName) {
 
 var setNetworkSelect = function(newNum){
     setTimeout(function(){
-        document.getElementById("network").selectedIndex = newNum;        
+        if(!document.getElementById("network")){
+            setNetworkSelect();
+        } else {
+            document.getElementById("network").selectedIndex = newNum;        
+        }
     },100);
 }
 var setContractSelect = function(newNum){
     setTimeout(function(){
-        document.getElementById("contract").selectedIndex = newNum;        
+        if(!document.getElementById("contract")){
+            setContractSelect();
+        } else {
+            document.getElementById("contract").selectedIndex = newNum;        
+        }
+
     },100);
 }
 
