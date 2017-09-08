@@ -99,7 +99,6 @@ window.onload = function () {
         var processTx = function(i){
             //generate ephemeral account
             var _owner = '0x' + lightwallet.keystore._computeAddressFromPrivKey(document.addresses[i].pk);
-            console.log(_owner);
             var _private_key = document.addresses[i]['pk'];
 
             //set up callback for web3 call to final transfer
@@ -114,7 +113,10 @@ window.onload = function () {
                     $("send_eth_done").style.display = 'block';
                     $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
                     var relative_link = "receive.html?"+ "amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision + "&key=" + _private_key ;
-                    var link = document.location.href.split('?')[0].replace('send.html','').replace('#','') + relative_link;
+                    var minimal_relative_link = "receive.html?key=" + _private_key ;
+                    var base_url = document.location.href.split('?')[0].replace('send.html','').replace('#','');
+                    var link = base_url + relative_link;
+                    var minimal_link = base_url + minimal_relative_link;
                     $('link').value = link;
 
                     $('link').style.display='none';
@@ -144,7 +146,14 @@ window.onload = function () {
                     span.appendChild(p);
                     span.appendChild(div);
                     var qrcode = new QRCode(qrcode_id);
-                    qrcode.makeCode(link);
+                    var qr_content = link;
+                    if(false){
+                        qr_content = _private_key;
+                    } else if(false){
+                        qr_content = minimal_link;
+                    }
+
+                    qrcode.makeCode(qr_content);
 
                     if((i + 1) < numBatches){
                         processTx(i+1);
