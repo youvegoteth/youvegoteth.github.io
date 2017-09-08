@@ -47,8 +47,11 @@ var setContractSelect = function(newNum){
 //figure out what network to point at
 network_id=0; //mainnet
 var etherscanDomain = 'etherscan.io';
-if(getParam('network') != null){
+if(getParam('network') != null || getParam('n') != null){
     var newNetwork = parseInt(getParam('network'));
+    if(getParam('n')){
+        newNetwork = parseInt(getParam('n'));
+    }
     localStorage.setItem('network_id', newNetwork);
     network_id = newNetwork;
 } else if(localStorage.getItem('network_id') != null){
@@ -60,8 +63,11 @@ contract_revision=1;
 if(getParam('address') && getParam('key') && !getParam('contract')){
     contract_revision=0;
 }
-if(getParam('contract') != null){
+if(getParam('contract') != null || getParam('c') != null){
     var newcontract = parseInt(getParam('contract'));
+    if(getParam('c')){
+        newcontract = parseInt(getParam('c'));
+    }
     localStorage.setItem('contract', newcontract);
     contract_revision = newcontract;
 } else if(localStorage.getItem('contract') != null){

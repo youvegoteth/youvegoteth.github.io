@@ -7,6 +7,42 @@ window.onload = function () {
                 $("step_zero").style.display = "block";
             } else {
                 $("send_eth").style.display = "block";
+
+                var private_key = $("private_key").value;
+                var address = '0x' + lightwallet.keystore._computeAddressFromPrivKey(private_key);
+                contract().getTransferDetails.call(address,function(errors,result){
+                    if(errors){
+                        $("step_zero").style.display = "block";
+                    } else {
+                        var active = result[0];
+                        if(!active){
+                            $("step_zero").style.display = "block";
+                            return;
+                        }
+                        var amount = result[1].toNumber();
+                        var developer_tip_pct = result[2].toNumber();
+                        var initialized = result[3];
+                        var expiration_time = result[4].toNumber();
+                        var from = result[5];
+                        var owner = result[6];
+                        var erc20contract = result[7];
+                        var token = 'ETH';
+                        var tokenDetails = tokenAddressToDetails(erc20contract);
+                        var decimals = 18;
+                        if(tokenDetails){
+                            token = tokenDetails.name;
+                            decimals = tokenDetails.decimals;
+                        }
+                        amount = Math.round(amount / (10**decimals));
+                        var _text = "You've Got "+amount+" "+getWarning()+" "+token+"!";
+                        $("zeroh1").innerHTML = _text;
+                        $("oneh1").innerHTML = _text;
+                        $("tokenName").innerHTML = token;
+                        $("send_eth").style.display = "block";
+
+                    }
+                });
+
             }
         },1000);
 
@@ -18,14 +54,6 @@ window.onload = function () {
 
     //default form values
     $("private_key").value = getParam('key');
-    var token = getParam('token');
-    if(!token){
-        token = 'ETH';
-    }
-    var _text = "You've Got "+getParam('amount')+" "+getWarning()+" "+token+"!";
-    $("zeroh1").innerHTML = _text;
-    $("oneh1").innerHTML = _text;
-    $("tokenName").innerHTML = token;
 
     // When 'Generate Account' is clicked
     $("receive").onclick = function() {

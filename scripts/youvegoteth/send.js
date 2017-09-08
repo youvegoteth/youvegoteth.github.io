@@ -112,11 +112,9 @@ window.onload = function () {
                     $("tokenName").innerHTML = tokenName;
                     $("send_eth_done").style.display = 'block';
                     $("trans_link").href = "https://"+etherscanDomain+"/tx/" + result;
-                    var relative_link = "receive.html?"+ "amount=" + $("amount").value + "&network=" + network_id+ "&token=" + tokenName + "&contract=" + contract_revision + "&key=" + _private_key ;
-                    var minimal_relative_link = "receive.html?key=" + _private_key ;
+                    var relative_link = "r.html?n=" + network_id+ "&c=" + contract_revision + "&key=" + _private_key ;
                     var base_url = document.location.href.split('?')[0].replace('send.html','').replace('#','');
                     var link = base_url + relative_link;
-                    var minimal_link = base_url + minimal_relative_link;
                     $('link').value = link;
 
                     $('link').style.display='none';
@@ -149,8 +147,6 @@ window.onload = function () {
                     var qr_content = link;
                     if(false){
                         qr_content = _private_key;
-                    } else if(false){
-                        qr_content = minimal_link;
                     }
 
                     qrcode.makeCode(qr_content);
