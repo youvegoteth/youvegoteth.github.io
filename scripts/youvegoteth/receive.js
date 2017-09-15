@@ -33,7 +33,8 @@ window.onload = function () {
                             token = tokenDetails.name;
                             decimals = tokenDetails.decimals;
                         }
-                        amount = Math.round(amount / (10**decimals), 2);
+                        var round_to = 10**3;
+                        amount = Math.round( round_to * amount / (10**decimals)) / round_to;
                         var _text = "You've Got "+amount+" "+getWarning()+" "+token+"!";
                         $("zeroh1").innerHTML = _text;
                         $("oneh1").innerHTML = _text;
