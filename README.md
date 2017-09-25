@@ -1,3 +1,8 @@
+<a href="https://gitcoin.co/explorer/?q=youvegoteth" title=”Push Open Source Forward”>
+    <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_03.png' alt=’Browse Gitcoin Bounties’ width=267px height=52px  style='width: 267px;height: 52px;'/>
+</a>
+
+
 # You've Got ETH
 
 Easily send [Ethereum](https://www.ethereum.org/) to an email.
