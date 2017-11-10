@@ -3,6 +3,7 @@ var tokens =  null
 
 if(network_id == 0 ){
   var tokens = [
+    { "addr": "0xDe39E5E5a1B0eEB3Afe717D6d011CaE88D19451e", "name": "FUDD", "decimals": 8 },
 //YGE tokens
     { "addr": "0x2941deaad71adb02b944bd38ebce2f1f4c9a62dc", "name": "COLO", "decimals": 18 },
 // from https://github.com/etherdelta/etherdelta.github.io/blob/master/config/main.json
