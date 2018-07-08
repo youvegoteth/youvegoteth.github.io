@@ -7,6 +7,8 @@
 
 Easily send [Ethereum](https://www.ethereum.org/) to an email.
 
+Important - Please do not use this project until we have had a chance to perform a full audit of the functionality.  <a href="https://github.com/youvegoteth/youvegoteth.github.io/pull/17">More info here</a>
+
 _The You've Got ETH team is the winner of the community prize at the August 2017 [Dappathon](http://dappathon.com/)._ 
 
 # Demo
