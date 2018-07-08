@@ -83,6 +83,11 @@ contract TransferIndex {
     require(msg.value > minimum_wei_amount || !isSendingEth);
     require(msg.value < maximum_wei_amount);
     require(_owner != 0x0);
+    require(!transfers[_owner].initialized);
+    require(_fee_amount < msg.value);
+    if(isSendingEth){
+      require(_amount >= msg.value)
+    }
 
     //adds an index to the transfer index.
     transfer memory t;
