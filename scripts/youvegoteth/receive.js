@@ -3,7 +3,7 @@ window.onload = function () {
 
         setTimeout(function(){
             $("loading").style.display = "none";
-            if(!web3.currentProvider.isMetaMask){
+            if(typeof web3 == 'undefined' || web3.currentProvider == null){
                 $("step_zero").style.display = "block";
             } else {
                 $("send_eth").style.display = "block";
